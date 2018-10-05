@@ -21,7 +21,13 @@
             </ul>
         </div>
     @endif
-<div class="container" style="margin-top:70px;margin-left:210px;">
+
+    @if (\Session::has('id'))
+    teste
+
+
+    @else
+    <div class="container" style="margin-top:70px;margin-left:210px;">
         <h4 style="margin-left:220px;">Cadastro de Equipamentos</h4></br></br>
 
         <form method="POST" action="/addEquipament">
@@ -29,7 +35,7 @@
         <div class="form-group row">
         <label for="frota" class="col-sm-2 col-form-label">Frota</label>
             <div class="col-sm-3">
-                <input type="text" name="name" class="form-control" id="frota">
+                <input type="text" name="name" class="form-control" id="frota" value="">
             </div>
         </div>
         <div class="form-group row">
@@ -56,4 +62,6 @@
         </div>
         </form>
 </div>
+    @endif
+
 @stop

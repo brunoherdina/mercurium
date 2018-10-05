@@ -20,7 +20,7 @@
                             <tr>
                                 <td>{{ $eq->id }}  </td>
                                 <td>{{ $eq->name }}</td>
-                                <td style="float:right;"><button class="btn btn-warning" name="editar">Editar</button><button class="btn btn-danger" name="excluir" style="margin-left:10px;">Excluir</button></td>
+                                <td style="float:right;"><a class="btn btn-warning" name="editar" href="{{ route('equipament.store', ['id'=>$eq->id]) }}">Editar</a><a class="btn btn-danger" href="equipament.edit/{{$eq->id}}" name="excluir" style="margin-left:10px;">Excluir</a></td>
                             </tr>
                             @empty
                                 <p>Nenhuma Categoria Cadastrada</p>
