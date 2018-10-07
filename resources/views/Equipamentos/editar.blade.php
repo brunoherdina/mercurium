@@ -23,7 +23,7 @@
     @endif
 
     <div class="container" style="margin-top:70px;margin-left:210px;">
-        <h4 style="margin-left:220px;">Editar Equipamento</h4></br></br>
+        <h2 style="margin-left:202px;">Editar Equipamento</h2></br></br>
 
         <form method="POST" action="{{ route('equipament.update', ['id'=>$e->id]) }}">
         {{ csrf_field() }}

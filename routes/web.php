@@ -20,9 +20,10 @@ Route::group(['middleware' => ['auth']], function(){
     //Editar equipamento
     Route::get('Equipamento/alterar', 'Admin\EquipamentsController@getAll')->name('equipament.list');
     Route::get('Equipamento/editar/{id?}', 'Admin\EquipamentsController@editarEquipamento')->name('equipament.edit');
-    Route::post('equipament.update/{id}', 'Admin\EquipamentsController@update')->name('equipament.update');
+    Route::post('Equipamento/atualizar/{id}', 'Admin\EquipamentsController@update')->name('equipament.update');
 
-
+    //Excluir equipamento
+    Route::get('Equipamento/excluir', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
 });
 
 Route::get('/', function () {
