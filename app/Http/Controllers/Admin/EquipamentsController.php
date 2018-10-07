@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Equipament;
+use App\Models\EquipamentType;
 
 class EquipamentsController extends Controller
 {
@@ -31,7 +32,7 @@ class EquipamentsController extends Controller
         $eq->status = $request->input('status');
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
-        return view('Equipamentos.adicionarEquipamento')->with('success', 'Equipamento cadastrado com sucesso.');
+        return redirect()->route('equipament.store')->with('success');
         }catch(PDOException $e){
             return $e->getMessage();
         }
@@ -39,7 +40,8 @@ class EquipamentsController extends Controller
 
     public function show($id)
     {
-        return Equipament::find($id);
+        $e = Equipament::find($id);
+
     }
 
     public function update(Request $request, $id)
@@ -47,12 +49,11 @@ class EquipamentsController extends Controller
 
         $eq = Equipament::findOrFail($id);
 
-        $eq = new Equipament();
         $eq->name = $request->input('name');
         $eq->status = $request->input('status');
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
-        return redirect()->route('user.index')->with('message', 'Equipamento alterado com sucesso!');
+        return redirect()->route('equipament.store')->with('message', 'Equipamento alterado com sucesso!');
     }
 
     public function destroy(Request $request, $id)
@@ -62,5 +63,15 @@ class EquipamentsController extends Controller
         $eq->delete();
 
         return redirect()->route('user.index')->with('message', 'Equipamento excluido com sucesso!');
+    }
+
+    public function editarEquipamento($id)
+    {
+        $e = new Equipament();
+        $e = $e->find($id);
+        $tipos = new EquipamentType();
+        $tipos = $tipos->get();
+        return view('Equipamentos.editar', compact('e'), compact('tipos'));
+
     }
 }
