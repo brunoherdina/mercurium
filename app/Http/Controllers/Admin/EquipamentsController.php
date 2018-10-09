@@ -32,9 +32,9 @@ class EquipamentsController extends Controller
         $eq->status = $request->input('status');
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
-        return redirect()->route('equipament.store')->with('success');
+        return redirect()->route('equipament.store')->with('success', 'Equipamento adicionado com sucesso!');
         }catch(PDOException $e){
-            return $e->getMessage();
+            return redirect()->route('equipament.store')->with('error', 'Erro ao adicionar equipamento!');
         }
     }
 
@@ -46,14 +46,17 @@ class EquipamentsController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        try{
         $eq = Equipament::findOrFail($id);
 
         $eq->name = $request->input('name');
         $eq->status = $request->input('status');
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
-        return redirect()->route('equipament.store')->with('message', 'Equipamento alterado com sucesso!');
+        return redirect()->route('equipament.list')->with('success', 'Equipamento alterado com sucesso!');
+        }catch(PDOException $e){
+            return redirect()->route('equipament.list')->with('error', 'Erro ao alterar equipamento!');
+        }
     }
 
     public function destroy(Request $request, $id)

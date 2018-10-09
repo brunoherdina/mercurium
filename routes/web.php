@@ -23,7 +23,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('Equipamento/atualizar/{id}', 'Admin\EquipamentsController@update')->name('equipament.update');
 
     //Excluir equipamento
-    Route::get('Equipamento/excluir', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
+    Route::get('equipament.delete', function(){
+        return view('Equipamentos.excluirModal');
+    })->name('equipament.delete');
+    Route::get('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
 });
 
 Route::get('/', function () {
