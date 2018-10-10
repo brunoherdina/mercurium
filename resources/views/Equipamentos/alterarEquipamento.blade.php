@@ -3,7 +3,15 @@
 @section('title', 'Equipamentos')
 
 @section('content_header')
-
+<link rel="stylesheet"  src="{{ URL::asset('css/sweetalert2.min.css') }}">
+<style>
+td button{
+    width:100px;
+}
+td a{
+    width:100px;
+}
+</style>
 @stop
 
 @section('content')
@@ -23,7 +31,7 @@
         </div>
     @endif
 <div class="container" style="max-width:800px;">
-    <h3 style="text-aling:center;"><strong>Editar equipamento</strong></h3><br/><br/>
+    <h3 style="text-aling:center;"><strong>Equipamentos</strong></h3><br/><br/>
                         <table class="table table-striped table-dark">
                             <thead class="thead-dark">
                                 <tr>
@@ -37,33 +45,14 @@
                                 <td>{{ $eq->id }}  </td>
                                 <td>{{ $eq->name }}</td>
                                 <td style="float:right;">
-                                <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a>
-                                <button class="btn btn-danger" data-id="{{$eq->id}}" data-name="teste" data-toggle="modal" data-target="#delete" style="margin-left:10px;">Excluir</button> 
+                                <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>
+                                <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
+                                {{ csrf_field() }}
+                                <button class="btn btn-danger delete_button" type="button">Deletar</button> 
+                                </form>
                                 </td>
                             </tr>
 
-                            <!--Modal pra deletar equipamento-->
-                            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="text-align:center;">
-                                        <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span></button>
-                                                        <h2 class="modal-title" id="myModalLabel">Excluir equipamento</h2>
-                                                    </div>
-                                                    <form action="{{route('equipament.destroy', 'id')}}" method="POST">
-                                                    {{csrf_field()}}
-                                                        <div class="modal-body">
-                                                            <h3>Você está prestes a excluir o equipamento:
-                                                            <input type="text" name="name" id="name" value="">
-                                                            <br/><br/>Deseja continuar?</h3><br/><br/>
-                                                            <button data-dismiss="modal"class="btn btn-primary" name="voltar" style="width:100px;height:40px;">Voltar</button>
-                                                            <button class="btn btn-danger" type="submit" name="excluir" style="width:100px;height:40px;margin-left:10px;" href="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">Excluir</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                        </div>
-                                </div>
                             @empty
                                 <p>Nenhuma Categoria Cadastrada</p>
                             @endforelse
@@ -71,11 +60,26 @@
                         </table>
 </div>
 <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
 <script>
-   jQuery('#delete').on('show.bs.modal', function (event) {
-        console.log('Modal abriu')
-        var button = jQuery(event.target);
-		var form = button.closest('form')[0].submit();
+    $('.delete_button').on('click', function (event) {
+        var button = $(this);
+		var form = button.closest('form');
+		
+		swal({
+		  title: 'Atenção',
+		  text: "Você está prestes a excluir o equipamento, deseja continuar?",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Sim',
+		  cancelButtonText: 'Não'
+		}).then((result) => {
+		  if (result.value) {
+			form[0].submit();
+		  }
+		})	;		
     });
     
     </script>

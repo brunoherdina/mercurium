@@ -3,6 +3,15 @@
 @section('title', 'Equipamentos')
 
 @section('content_header')
+<style>
+    .botao{
+        width:263px;
+        height:40px;
+        margin-left:196px;
+        font-size:18px;
+        font-weight:bold;
+    }
+</style>
 @stop
 
 @section('content')
@@ -52,7 +61,12 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-                <input type="submit" value="Alterar" class="btn btn-warning" style="width:263px;height:40px;margin-left:196px;margin-top:20px;">
+                <input type="submit" value="Alterar" class="btn btn-warning botao" style="margin-top:20px;">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">
+                <a type="button" class="btn btn-primary botao" href="{{route ('equipament.list')}}" >Voltar</a>
             </div>
         </div>
         </form>

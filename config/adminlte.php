@@ -145,7 +145,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar',
-                    'url'  => '#',
+                    'url'  => 'Usuarios/cadastrar',
                 ],
                 [
                     'text' => 'Alterar',

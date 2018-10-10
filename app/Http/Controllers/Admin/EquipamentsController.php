@@ -65,7 +65,7 @@ class EquipamentsController extends Controller
         $eq = Equipament::find($id);
         $eq->delete();
 
-        return redirect()->route('user.index')->with('message', 'Equipamento excluido com sucesso!');
+        return redirect()->route('equipament.list')->with('success', 'Equipamento excluido com sucesso!');
     }
 
     public function editarEquipamento($id)

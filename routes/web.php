@@ -23,10 +23,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('Equipamento/atualizar/{id}', 'Admin\EquipamentsController@update')->name('equipament.update');
 
     //Excluir equipamento
-    Route::get('equipament.delete', function(){
-        return view('Equipamentos.excluirModal');
-    })->name('equipament.delete');
-    Route::get('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
+    Route::post('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
 });
 
 //Usuários
@@ -35,6 +32,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Cadastro de usuários
     Route::get('Usuarios/cadastrar', 'Admin\EmployeePositionController@getAll')->name('user.add');
+    Route::post('Usuarios/cadastrar', 'Admin\UserController@store')->name('user.store');
 });
 
 Route::get('/', function () {
