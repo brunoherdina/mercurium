@@ -29,6 +29,14 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
 });
 
+//Usuários
+
+Route::group(['middleware' => ['auth']], function(){
+
+    //Cadastro de usuários
+    Route::get('Usuarios/cadastrar', 'Admin\EmployeePositionController@getAll')->name('user.add');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

@@ -62,7 +62,7 @@
             <div class="col-sm-3">
                 <select name="employee_position_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Selecione...</option>
-                    @foreach($nivel as $n)
+                    @foreach($niveis as $n)
                     <option value="{{$n->id}}">{{ $n->name }}</option>
                     @endforeach
                  </select>

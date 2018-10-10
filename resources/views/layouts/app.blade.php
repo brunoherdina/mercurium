@@ -76,5 +76,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script>
+    $('#delete').on('show.bs.modal', function(event){
+        console.log('Modal abriu');
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var name = button.data('name')
+        var modal = $(this)
+        modal.find('.modal-body #name').val(name)
+    });
+    
+    </script>
 </body>
 </html>

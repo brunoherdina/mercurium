@@ -133,12 +133,8 @@ return [
                     'url'  => 'Equipamento/alterar',
                 ],
                 [
-                    'text' => 'Excluir',
-                    'url'  => 'Equipamento/excluir',
-                ],
-                [
                     'text' => 'Buscar',
-                    'url'  => 'Equipamento/buscarg',
+                    'url'  => 'Equipamento/buscar',
                 ],
             ],
         ],
@@ -148,7 +144,7 @@ return [
             'icon'    => 'user',
             'submenu' => [
                 [
-                    'text' => 'Novo',
+                    'text' => 'Cadastrar',
                     'url'  => '#',
                 ],
                 [
@@ -156,11 +152,7 @@ return [
                     'url'  => '#',
                 ],
                 [
-                    'text' => 'Excluir',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pesquisar',
+                    'text' => 'Buscar',
                     'url'  => '#',
                 ],
             ],
