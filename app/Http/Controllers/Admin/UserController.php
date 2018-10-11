@@ -12,19 +12,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try{
-        
+        $password = str_shuffle(time().rand(0, 10));
         $u = new User();
         $u->name = $request->input('name');
         $u->email = $request->input('email');
         $u->matricula = $request->input('matricula');
-        $u->password = $request->input('password');
+        $u->password = $password;
         $u->employee_position_id = $request->input('employee_position_id');
         $u->image = $request->input('image');
         $u->save();
-        
+        return redirect()->route('user.add')->with('success', 'Usuário cadastrado com sucesso!');
         }catch(PDOException $e)
         {
-            return $e->getMessage();
+            return redirect()->route('user.add')->with('error', 'Erro ao cadastrar usuário! '.$e->getMessage());
         }
     }
 
@@ -56,12 +56,4 @@ class UserController extends Controller
         $u = User::findOrFail($id);
         $u->delete();
     }
-
-    public function gerarSenha(){
-        $numero_de_bytes = 8;
-
-        $resultado_bytes = random_bytes($numero_de_bytes);
-        $resultado_final = bin2hex($resultado_bytes);
-        return $resultado_final;
-      }
 }

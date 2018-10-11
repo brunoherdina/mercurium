@@ -11,6 +11,14 @@ td button{
 td a{
     width:100px;
 }
+th{
+    font-size:16px;
+    width:200px;
+    text-align:center;
+}
+td{
+    font-size:14px;
+}
 </style>
 @stop
 
@@ -30,34 +38,51 @@ td a{
             </ul>
         </div>
     @endif
-<div class="container" style="max-width:800px;">
-    <h3 style="text-aling:center;"><strong>Equipamentos</strong></h3><br/><br/>
-                        <table class="table table-striped table-dark">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Frota</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @forelse ( $equipamentos as $eq )
-                            <tr>
-                                <td>{{ $eq->id }}  </td>
-                                <td>{{ $eq->name }}</td>
-                                <td style="float:right;">
-                                <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>
-                                <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
-                                {{ csrf_field() }}
-                                <button class="btn btn-danger delete_button" type="button">Deletar</button> 
-                                </form>
-                                </td>
-                            </tr>
+<div class="container" style="max-width:1000px;text-align:center;">
+    <h3><strong>Equipamentos</strong></h3><br/><br/>
+        <div class="row">
+            <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                <table id="example2" class="table table-hover">
+                    <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Frota</th>
+                    <th>Horímetro/KM</th>
+                    <th>Tipo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse ( $equipamentos as $eq )
+                        <tr>
+                            <td>{{ $eq->id }}  </td>
+                            <td>{{ $eq->name }}</td>
+                            <td> {{ $eq->status }}</td>
+                            <td>{{$eq->equipament_type_id}}</td>
+                            <td style="float:right;">
+                            <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>
+                            <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
+                            {{ csrf_field() }}
+                            <button class="btn btn-danger delete_button" type="button">Deletar</button> 
+                            </form>
+                            </td>
+                        </tr>
 
-                            @empty
-                                <p>Nenhuma Categoria Cadastrada</p>
-                            @endforelse
-                            </tbody>
-                        </table>
+                        @empty
+                            <p>Nenhuma Categoria Cadastrada</p>
+                        @endforelse
+                    </tbody>
+                </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            </div>
+        </div>
 </div>
 <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
@@ -84,3 +109,4 @@ td a{
     
     </script>
 @stop
+        
