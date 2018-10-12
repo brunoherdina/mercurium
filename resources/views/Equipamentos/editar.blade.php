@@ -54,7 +54,7 @@
                 <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Selecione...</option>
                     @foreach($tipos as $t)
-                    <option value="{{$t->id}}">{{ $t->name }}</option>
+                    <option value="{{$t->id}}">{{ $t->type }}</option>
                     @endforeach
                  </select>
             </div>
