@@ -24,6 +24,16 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Excluir equipamento
     Route::post('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
+
+    //Adicionar tipo de equipamento
+    Route::get('Equipamento/tipos', 'Admin\EquipamentTypeController@index')->name('equipamentTypes');
+    Route::post('Equipamento/adicionarTipo', 'Admin\EquipamentTypeController@store')->name('type.store');
+
+    //Editar tipo
+    Route::get('Equipamento/editarTipo/{id?}', 'Admin\EquipamentTypeController@editarTipo')->name('type.edit');
+
+    //Excluir tipo
+    Route::post('Equipamento/excluirTipo/{id?}', 'Admin\EquipamentTypeController@destroy')->name('type.destroy');
 });
 
 //Usuários

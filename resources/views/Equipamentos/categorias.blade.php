@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Equipamentos')
+@section('title', 'Usuários')
 
 @section('content_header')
 <link rel="stylesheet"  src="{{ URL::asset('css/sweetalert2.min.css') }}">
@@ -35,8 +35,26 @@ td{
             </ul>
         </div>
     @endif
-<div class="container" style="max-width:1000px;text-align:center;">
-    <h3><strong>Equipamentos</strong></h3><br/><br/>
+
+    <div class="container" style="margin-left:210px;">
+        <h4 style="margin-left:285px;font-weight:bolder;" id="titulo">Novo tipo</h4><br/>
+
+        <form method="POST" action="{{route('type.store')}}">
+        {{ csrf_field() }}
+        <div class="form-group row">
+        <label for="tipo" class="col-sm-2 col-form-label" style="font-size:18px;">Tipo</label>
+            <div class="col-sm-3">
+                <input type="text" name="type" class="form-control" id="type" required> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">
+                <input type="submit" value="Salvar" class="btn btn-primary" style="width:263px;height:40px;margin-left:196px;margin-top:20px;">
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="container" style="max-width:1000px;text-align:center;">
         <div class="row">
             <div class="col-xs-12">
             <div class="box">
@@ -48,21 +66,17 @@ td{
                     <thead>
                     <tr>
                     <th>ID</th>
-                    <th>Frota</th>
-                    <th>Horímetro/KM</th>
                     <th>Tipo</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ( $equipamentos as $eq )
+                    @forelse ( $tipos as $t )
                         <tr>
-                            <td>{{ $eq->id }}  </td>
-                            <td>{{ $eq->name }}</td>
-                            <td> {{ $eq->status }}</td>
-                            <td>{{$eq->type}}</td>
+                            <td>{{ $t->id }}</td>
+                            <td>{{ $t->type }}  </td>
                             <td style="float:right;">
-                            <button class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</button><br/><br/>
-                            <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
+                            <button class="btn btn-warning edit_button" name="editar" href="{{ route('type.edit', ['id'=>$t->id]) }}">Editar</button><br/><br/>
+                            <form method="POST" action="{{ route('type.destroy', ['id'=>$t->id]) }}">
                             {{ csrf_field() }}
                             <button class="btn btn-danger delete_button" type="button">Deletar</button> 
                             </form>
@@ -90,7 +104,7 @@ td{
 		
 		swal({
 		  title: 'Atenção',
-		  text: "Você está prestes a excluir o equipamento, deseja continuar?",
+		  text: "Você está prestes a excluir esta categoria, deseja continuar?",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
@@ -105,5 +119,5 @@ td{
     });
     
     </script>
+
 @stop
-        

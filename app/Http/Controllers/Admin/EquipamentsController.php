@@ -83,16 +83,4 @@ class EquipamentsController extends Controller
 
     }
 
-    public function equipamentEdit()
-    {
-        $e = DB::table('equipaments')
-            ->join('equipament_types', 'equipaments_type.id', '=', 'equipament_type_id')
-            ->get();
-
-           
-    }
-
-   
-
-
 }

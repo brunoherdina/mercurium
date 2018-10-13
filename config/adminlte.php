@@ -133,8 +133,8 @@ return [
                     'url'  => 'Equipamento/alterar',
                 ],
                 [
-                    'text' => 'Buscar',
-                    'url'  => 'Equipamento/buscar',
+                    'text' => 'Adicionar tipo',
+                    'url'  => 'Equipamento/tipos',
                 ],
             ],
         ],
