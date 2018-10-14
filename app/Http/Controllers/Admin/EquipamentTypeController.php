@@ -27,7 +27,7 @@ class EquipamentTypeController extends Controller
         $t = new EquipamentType();
         $t->type = $request->type;
         $t->save();
-        return redirect()->route('equipamentTypes')->with('success', 'Novo tipo adicionado!');
+        return redirect()->route('equipamentTypes')->with('success', 'Novo categoria adicionado!');
         }catch(PDOException $e){
             return redirect()->route('equipamentTypes')->with('error', 'Falha ao adicionar: '.$e-getMessage());
         }
@@ -37,13 +37,25 @@ class EquipamentTypeController extends Controller
     {
         $t = EquipamentType::findOrFail($id);
         $t->delete();
-        return redirect()->route('equipamentTypes')->with('error', 'Tipo excluido com sucesso!');
+        return redirect()->route('equipamentTypes')->with('error', 'Categoria excluido com sucesso!');
     }
 
     public function editarTipo($id)
     {
-        $e = new Equipament();
-        $e = $e->find($id);
-        return view('Equipamentos.categoriaEdit', compact('e'));
+        $t = new EquipamentType();
+        $t = $t->find($id);
+        return view('Equipamentos.categoriaEdit', compact('t'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try{
+        $t = EquipamentType::findOrFail($id);
+        $t->type = $request->input('type');
+        $t->save();
+        return redirect()->route('equipamentTypes')->with('success', 'Categoria alterada com sucesso!');
+        }catch(PDOException $e){
+            return redirect()->route('equipamentTypes')->witdh('error', 'Erro ao alterar: '.$e->getMessage());
+        }
     }
 }

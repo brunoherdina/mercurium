@@ -8,6 +8,11 @@
 td button{
     width:100px;
 }
+
+td a{
+    width:100px;
+}
+
 th{
     font-size:16px;
     width:200px;
@@ -75,7 +80,7 @@ td{
                             <td>{{ $t->id }}</td>
                             <td>{{ $t->type }}  </td>
                             <td style="float:right;">
-                            <button class="btn btn-warning edit_button" name="editar" href="{{ route('type.edit', ['id'=>$t->id]) }}">Editar</button><br/><br/>
+                            <a class="btn btn-warning edit_button" name="editar" href="{{ route('type.edit', ['id'=>$t->id]) }}">Editar</a><br/><br/>
                             <form method="POST" action="{{ route('type.destroy', ['id'=>$t->id]) }}">
                             {{ csrf_field() }}
                             <button class="btn btn-danger delete_button" type="button">Deletar</button> 

@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Editar tipo
     Route::get('Equipamento/editarTipo/{id?}', 'Admin\EquipamentTypeController@editarTipo')->name('type.edit');
+    Route::post('Equipamento/atualizarTipo/{id}', 'Admin\EquipamentTypeController@update')->name('type.update');
 
     //Excluir tipo
     Route::post('Equipamento/excluirTipo/{id?}', 'Admin\EquipamentTypeController@destroy')->name('type.destroy');

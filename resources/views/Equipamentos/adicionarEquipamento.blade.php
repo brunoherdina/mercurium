@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group row">
-        <label for="equipament_type_id" class="col-sm-2 col-form-label">Tipo</label>
+        <label for="equipament_type_id" class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-3">
                 <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Selecione...</option>

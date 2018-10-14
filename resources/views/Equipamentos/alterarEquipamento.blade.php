@@ -8,11 +8,16 @@
 td button{
     width:100px;
 }
+
+td a{
+    width:100px;
+}
 th{
     font-size:16px;
     width:200px;
     text-align:center;
 }
+
 td{
     font-size:14px;
 }
@@ -50,7 +55,7 @@ td{
                     <th>ID</th>
                     <th>Frota</th>
                     <th>Horímetro/KM</th>
-                    <th>Tipo</th>
+                    <th>Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -61,7 +66,7 @@ td{
                             <td> {{ $eq->status }}</td>
                             <td>{{$eq->type}}</td>
                             <td style="float:right;">
-                            <button class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</button><br/><br/>
+                            <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>
                             <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
                             {{ csrf_field() }}
                             <button class="btn btn-danger delete_button" type="button">Deletar</button> 

@@ -125,7 +125,7 @@ return [
             'icon'    => 'car',
             'submenu' => [
                 [
-                    'text' => 'Cadastrar',
+                    'text' => 'Adicionar equipamento',
                     'url'  => 'Equipamento/cadastrar',
                 ],
                 [
@@ -133,7 +133,7 @@ return [
                     'url'  => 'Equipamento/alterar',
                 ],
                 [
-                    'text' => 'Adicionar tipo',
+                    'text' => 'Categorias',
                     'url'  => 'Equipamento/tipos',
                 ],
             ],
