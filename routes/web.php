@@ -44,6 +44,12 @@ Route::group(['middleware' => ['auth']], function(){
     //Cadastro de usuários
     Route::get('Usuarios/cadastrar', 'Admin\EmployeePositionController@getAll')->name('user.add');
     Route::post('Usuarios/cadastrar', 'Admin\UserController@store')->name('user.store');
+
+    //Buscar usuário
+    Route::match(['get', 'post'], 'Usuarios/buscar', 'Admin\UserController@search')->name('user.search');
+
+    //Excluir usuário
+    Route::post('Usuario/excluir/{id}', 'Admin\UserController@destroy')->name('user.destroy');
 });
 
 Route::get('/', function () {

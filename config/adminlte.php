@@ -129,7 +129,7 @@ return [
                     'url'  => 'Equipamento/cadastrar',
                 ],
                 [
-                    'text' => 'Alterar',
+                    'text' => 'Editar equipamento',
                     'url'  => 'Equipamento/alterar',
                 ],
                 [
@@ -144,16 +144,12 @@ return [
             'icon'    => 'user',
             'submenu' => [
                 [
-                    'text' => 'Cadastrar',
+                    'text' => 'Cadastrar novo',
                     'url'  => 'Usuarios/cadastrar',
                 ],
                 [
-                    'text' => 'Alterar',
-                    'url'  => '#',
-                ],
-                [
                     'text' => 'Buscar',
-                    'url'  => '#',
+                    'url'  => 'Usuarios/buscar',
                 ],
             ],
         ],
