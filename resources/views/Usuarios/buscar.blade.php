@@ -28,7 +28,7 @@ form{
 }
 
 #searchIcon{
-    margin-left:20px;
+    margin-left:10px;
     width:50px;
     height:50px;
 }
@@ -60,7 +60,9 @@ form{
                 <div class="form-group mb-2">
                     <input type="text"  class="form-control-plaintext" id="busca" name="busca" placeholder="Pesquisar...">
                 </div>
-                    <input type="image" class="mb-2" id="searchIcon" name="pesquisar" src="{{ URL::asset('assets/icons/search-icon.png') }}">
+                <div class="form-group mb-2">
+                    <input type="image" id="searchIcon" name="pesquisar" src="{{ URL::asset('assets/icons/search-icon.png') }}">
+                </div>
             </form>
         </div>
     </div>

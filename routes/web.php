@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('Equipamento/excluirTipo/{id?}', 'Admin\EquipamentTypeController@destroy')->name('type.destroy');
 });
 
-//Usuários
+//USUÁRIOS
 
 Route::group(['middleware' => ['auth']], function(){
 
@@ -51,6 +51,17 @@ Route::group(['middleware' => ['auth']], function(){
     //Excluir usuário
     Route::post('Usuario/excluir/{id}', 'Admin\UserController@destroy')->name('user.destroy');
 });
+
+//CHECKLISTS
+
+Route::group(['middleware' => ['auth']], function(){
+
+    //Criar checklist
+    Route::get('Checklists/novo', 'Admin\EquipamentChecklistController@adicionar')->name('checklist.add');
+});
+
+
+
 
 Route::get('/', function () {
     return view('welcome');

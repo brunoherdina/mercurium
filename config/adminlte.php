@@ -160,7 +160,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Novo',
-                    'url'  => '#',
+                    'url'  => 'Checklists/novo',
                 ],
                 [
                     'text' => 'Alterar',

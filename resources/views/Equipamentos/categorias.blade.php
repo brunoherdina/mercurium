@@ -54,12 +54,12 @@ td{
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-                <input type="submit" value="Salvar" class="btn btn-primary" style="width:263px;height:40px;margin-left:196px;margin-top:20px;">
+                <input type="submit" value="Adicionar" class="btn btn-primary" style="width:263px;height:40px;margin-left:196px;margin-top:20px;">
             </div>
         </div>
         </form>
     </div>
-    <div class="container" style="max-width:1000px;text-align:center;">
+    <div class="container" style="max-width:700px;text-align:center;">
         <div class="row">
             <div class="col-xs-12">
             <div class="box">
@@ -70,14 +70,12 @@ td{
                 <table id="example2" class="table table-hover">
                     <thead>
                     <tr>
-                    <th>ID</th>
-                    <th>Tipo</th>
+                    <th>Categoria</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse ( $tipos as $t )
                         <tr>
-                            <td>{{ $t->id }}</td>
                             <td>{{ $t->type }}  </td>
                             <td style="float:right;">
                             <a class="btn btn-warning edit_button" name="editar" href="{{ route('type.edit', ['id'=>$t->id]) }}">Editar</a><br/><br/>

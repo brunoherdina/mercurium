@@ -40,7 +40,7 @@ td{
             </ul>
         </div>
     @endif
-<div class="container" style="max-width:1000px;text-align:center;">
+<div class="container" style="max-width:800px;text-align:center;">
     <h3><strong>Equipamentos</strong></h3><br/><br/>
         <div class="row">
             <div class="col-xs-12">
@@ -49,10 +49,9 @@ td{
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                <table id="example2" class="table table-hover">
+                <table class="table table-hover">
                     <thead>
                     <tr>
-                    <th>ID</th>
                     <th>Frota</th>
                     <th>Horímetro/KM</th>
                     <th>Categoria</th>
@@ -61,7 +60,6 @@ td{
                     <tbody>
                     @forelse ( $equipamentos as $eq )
                         <tr>
-                            <td>{{ $eq->id }}  </td>
                             <td>{{ $eq->name }}</td>
                             <td> {{ $eq->status }}</td>
                             <td>{{$eq->type}}</td>
