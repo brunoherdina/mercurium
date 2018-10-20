@@ -16,7 +16,15 @@
     }
 
     #adicionar{
-        margin-left:20px; 
+        width:122px;
+        margin-left:10px; 
+    }
+    .delete_button{
+        width:122px;
+    }
+    form{
+        margin:0px;
+        padding:0px;
     }
 </style>
 @stop
@@ -38,31 +46,12 @@
         </div>
     @endif
 
-    <div class="container" style="margin-left:210px;max-width:1000px;">
-        <h3 style="margin-left:210px;"><strong>Cadastro de Checklist</strong></h3><br/><br/>
+    <div class="container" style="max-width:900px;margin-left:200px;">
+        <h3 style="text-align:center;"><strong>Cadastro de Checklist</strong></h3><br/><br/>
         <form method="POST" action="">
             {{ csrf_field() }}
             <div class="form-group row">
-                <input type="text" name="question[]" id="pergunta" placeholder="Digite a pergunta...">
-                <button class="btn btn-primary" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar</button>
-            </div>
-            <div class="form-group row">
-            <table id="table" class="table table-hover">
-                    <thead>
-                    <tr>
-                    <th>ID</th>
-                    <th>Pergunta</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="form-group row">
-            <label for="categoria" class="col-sm-2 col-form-label">Selecionar Categoria</label>
+            <label for="categoria" class="col-sm-2 col-form-label"> Categoria</label>
                 <div class="col-sm-3">
                     <select name="categoria" class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
                         <option selected>Selecione...</option>
@@ -71,26 +60,47 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-sm-3">
+                    <input type="submit" value="Finalizar e salvar" class="btn btn-primary" style="float:right;"> 
+                </div>
             </div>
+            <div class="form-group row">
+                <input type="text" name="questions[]" id="pergunta" value="" placeholder="Digite aqui os itens do checklist...">
+                <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar</button>
+            </div>
+            <div class="form-group row">
+            <table id="table" class="table table-hover" style="max-width:595px;">
+                    <thead>
+                    <tr>
+                    <th>Item</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tabela">
+                       
+                    </tbody>
+                </table>
+            </div>
+           
+
         </form>
     </div>
 
+
+
+
+    <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script>
-    // var table = $('table');
-    // $('adicionar').on('click', function () {
-    //     var el = $(this);
-    //     var value = el.val();
+    var table = $('#table');
+    $('#adicionar').click(function () {
+        var el = $('#pergunta');
+        var value = el.val();
 
-    //     if (pergunta) {
-    //         table.find('tbody').append('<tr><td><input type="hidden" name="questions[]" value="' + pergunta + '" >\' + value + \'</td></tr>')
-    //     }
-    // });
+        if (value) {
+           $('#tabela').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" >' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
+           $('#pergunta').val("");
+        }
+});
 
-        var question = '<br><input name="items[]" placeholder="digite o item">';
-    $('adicionar').click(function(){
-    $('form').append(question);
-    return false;
-})
     </script>
 
 @stop
