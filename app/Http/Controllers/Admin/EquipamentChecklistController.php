@@ -15,4 +15,9 @@ class EquipamentChecklistController extends Controller
         $tipos = EquipamentType::get();
         return view('Checklists.adicionar', compact('tipos'));
     }
+
+    public function store(Request $request)
+    {
+        
+    }
 }
