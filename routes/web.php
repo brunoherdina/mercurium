@@ -58,7 +58,10 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Criar checklist
     Route::get('Checklists/novo', 'Admin\EquipamentChecklistController@adicionar')->name('checklist.add');
-    Route::Post('Checklist/novo', 'Admin\EquipamentChecklistController@store')->name('checklist.store');
+    Route::Post('Checklists/novo', 'Admin\EquipamentChecklistController@store')->name('checklist.store');
+
+    //Excluir checklist
+    Route::get('Checklists/excluir', 'Admin\EquipamentChecklistController@excluir')->name('checklist.delete');
 });
 
 

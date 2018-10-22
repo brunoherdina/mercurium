@@ -11,9 +11,8 @@
         padding-right:10px;
     }
 
-    .perguntas{
-        margin-bottom:10px;
-        width:68%;
+    #pergunta{
+        width:450px;
     }
 
     #adicionar{
@@ -21,8 +20,7 @@
         margin-left:10px; 
     }
     .delete_button{
-        margin-left:10px;
-        width: 10%;
+        width:122px;
     }
     form{
         margin:0px;
@@ -63,15 +61,27 @@
                     </select>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar </button>
-                </div>
-                <div class="col-sm-3">
-                    <input type="submit" value="Finalizar e salvar" class="btn btn-primary"> 
+                    <input type="submit" value="Finalizar e salvar" class="btn btn-primary" style="float:right;"> 
                 </div>
             </div>
-            <div class="form-group row inputs">
-                <input class="perguntas" type="text" name="questions[]" placeholder="Digite aqui os itens do checklist...">
+            <div class="form-group row">
+                <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui os itens do checklist...">
+                <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar</button>
             </div>
+            <div class="form-group row">
+            <table id="table" class="table table-hover" style="max-width:595px;">
+                    <thead>
+                    <tr>
+                    <th>Item</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tabela">
+                       
+                    </tbody>
+                </table>
+            </div>
+           
+
         </form>
     </div>
 
@@ -80,17 +90,20 @@
 
     <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script>
-    
-    var item = '<input type="text" class="perguntas" name="questions[]" placeholder="Digite aqui os itens do checklist..."><button class="btn btn-danger delete_button" type="button">Apagar</button>';
-    $('#adicionar').click(function(){
-    $('.inputs').append(item);
-    $('.inputs').on('click', '.delete_button', function(e){
-        $('.delete_button').closest('input').remove();
-    });
-    
-    return false;
+    $('#adicionar').click(function () {
+        var el = $('#pergunta');
+        var value = el.val();
+
+        if (value) {
+           $('#tabela').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" >' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
+           $('#pergunta').val("");
+        }
+});
+
+    $('#table').on('click', '.delete_button', function(e){
+        $(this).closest('tr').remove();
     });
 
-    
     </script>
+
 @stop

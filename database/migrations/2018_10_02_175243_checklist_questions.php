@@ -14,9 +14,9 @@ class ChecklistQuestions extends Migration
     public function up()
     {
         Schema::create('checklist_questions', function (Blueprint $table) {
-            $table->increments('id');
             $table->string('name');
-            $table->engine = 'InnoDB';
+            $table->integer('equipament_type_id')->unsigned();
+            $table->foreign('equipament_type_id')->references('id')->on('equipament_types');
         });
     }
 

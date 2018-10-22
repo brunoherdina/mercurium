@@ -163,16 +163,12 @@ return [
                     'url'  => 'Checklists/novo',
                 ],
                 [
-                    'text' => 'Alterar',
-                    'url'  => '#',
-                ],
-                [
                     'text' => 'Excluir',
-                    'url'  => '#',
+                    'url'  => 'Checklists/excluir',
                 ],
                 [
                     'text' => 'Buscar',
-                    'url'  => '#',
+                    'url'  => 'Checklists/buscar',
                 ],
             ],
         ],
