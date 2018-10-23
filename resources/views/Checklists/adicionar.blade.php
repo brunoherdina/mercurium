@@ -1,30 +1,27 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuários')
+@section('title', 'Checklists')
 
 @section('content_header')
 <style>
-    .row{
-        padding-top:15px;
-    }
-    span{
-        padding-right:10px;
-    }
+    #searchIcon{
+    margin-left:10px;
+    width:40px;
+    height:40px;
+}
 
-    #pergunta{
-        width:450px;
-    }
-
-    #adicionar{
-        width:122px;
-        margin-left:10px; 
-    }
-    .delete_button{
-        width:122px;
+    #busca{
+        width:300px;
     }
     form{
         margin:0px;
         padding:0px;
+    }
+
+    .ladoEsquerdo{
+        margin-left:30px;
+        float: left;
+        max-width: 40%;
     }
 </style>
 @stop
@@ -46,44 +43,43 @@
         </div>
     @endif
 
-    <div class="container" style="max-width:900px;margin-left:200px;">
-        <h3><strong>Cadastro de Checklist</strong></h3><br/><br/>
-        <form method="POST" action="{{ route('checklist.store') }}">
-            {{ csrf_field() }}
-            <div class="form-group row">
-            <label for="categoria" class="col-sm-2 col-form-label"> Categoria</label>
-                <div class="col-sm-3">
-                    <select name="categoria" class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
-                        <option selected>Selecione...</option>
-                        @foreach($tipos as $t)
-                        <option value="{{$t->id}}">{{ $t->type }}</option>
-                        @endforeach
-                    </select>
+    <h3 style="text-align:center;"><strong>Cadastro de Checklist</strong></h3><br/><br/>
+    <div class="container ladoEsquerdo">
+        <div class="row">
+            <form method="GET" action="#" class="form-inline">
+                <div class="form-group mb-2">
+                    <input type="text"  class="form-control-plaintext" id="busca" name="busca" placeholder="Buscar pergunta...">
                 </div>
-                <div class="col-sm-3">
-                    <input type="submit" value="Finalizar e salvar" class="btn btn-primary" style="float:right;"> 
+                <div class="form-group mb-2">
+                    <input type="image" id="searchIcon" name="pesquisar" src="{{ URL::asset('assets/icons/search-icon.png') }}">
                 </div>
-            </div>
-            <div class="form-group row">
-                <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui os itens do checklist...">
-                <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar</button>
-            </div>
-            <div class="form-group row">
-            <table id="table" class="table table-hover" style="max-width:595px;">
-                    <thead>
+            </form>
+        </div>
+        <div class="row">
+            <h4>Perguntas cadastradas</h4>
+        </div>
+        <div class="row">
+            <table id="cadastradas" class="table table-hover table-striped">
+                <thead>
                     <tr>
-                    <th>Item</th>
+                        <th>Itens</th>
                     </tr>
-                    </thead>
-                    <tbody id="tabela">
-                       
-                    </tbody>
-                </table>
-            </div>
-           
+                </thead>
+                <tbody>
+                @forelse ( $questions as $q )
+                        <tr>
+                            <td>{{ $q->name }}  </td>
+                            <td style="float:right;">
+                            <button class="btn btn-danger delete_button" type="button">Deletar</button>
+                            </td>
+                        </tr>
 
-        </form>
-    </div>
+                        @empty
+                            <p>Nenhuma Categoria Cadastrada</p>
+                        @endforelse
+                </tbody>
+            </table>
+        </div>
 
 
 

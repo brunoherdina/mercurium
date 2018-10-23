@@ -159,17 +159,14 @@ return [
             'icon'    => 'list',
             'submenu' => [
                 [
+                    'text' => 'Cadastrar perguntas',
+                    'url'  => 'Checklists/perguntas',
+                ],
+                [
                     'text' => 'Novo',
                     'url'  => 'Checklists/novo',
-                ],
-                [
-                    'text' => 'Excluir',
-                    'url'  => 'Checklists/excluir',
-                ],
-                [
-                    'text' => 'Buscar',
-                    'url'  => 'Checklists/buscar',
-                ],
+                ]
+                
             ],
         ],
 

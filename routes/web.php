@@ -56,12 +56,19 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::group(['middleware' => ['auth']], function(){
 
-    //Criar checklist
+    //Cadastrar perguntas
+    Route::get('Checklists/perguntas', function(){
+        return view('Checklists.addPerguntas');
+    })->name('question.add');
+
+    Route::Post('Checklists/perguntas', 'Admin\ChecklistQuestionController@store')->name('question.store');
+
+    //Criar versão de checklist
     Route::get('Checklists/novo', 'Admin\EquipamentChecklistController@adicionar')->name('checklist.add');
     Route::Post('Checklists/novo', 'Admin\EquipamentChecklistController@store')->name('checklist.store');
 
-    //Excluir checklist
-    Route::get('Checklists/excluir', 'Admin\EquipamentChecklistController@excluir')->name('checklist.delete');
+    //Alterar checklist
+    Route::get('Checklists/alterar', 'Admin\EquipamentChecklistController@alterar')->name('checklist.edit');
 });
 
 

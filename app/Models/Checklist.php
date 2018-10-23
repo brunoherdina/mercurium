@@ -16,6 +16,6 @@ class Checklist extends Model
 
     public function checklistAnswer()
     {
-        $this->belongsTo('App\Http\Model\Checklist_answer');
+        $this->belongsTo(Location::class);
     }
 }

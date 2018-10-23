@@ -15,6 +15,8 @@ class EquipamentChecklistController extends Controller
     {
         $tipos = EquipamentType::get();
         return view('Checklists.adicionar', compact('tipos'));
+
+        $eChecklist = new EquipamentChecklist();
     }
 
     public function store(Request $request)
@@ -50,24 +52,34 @@ class EquipamentChecklistController extends Controller
             return redirect()->route('checklist.add')->with('success', 'Checklist adicionado com sucesso!');
     }
 
-    public function excluir(Request $request)
+    public function alterar()
     {
-        if($request->has('busca')){
-            $s = $request->get('busca');
-            $resultados = DB::table('checklist_questions')
-            ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
-            ->select('equipament_types.type', 'equipament_types.id')
-            ->where(function($q) use ($s){
-                $q->Where('type', 'LIKE', "%{$s}%");
-            })->paginate(15);
-            return view('Checklists.excluir', compact('resultados'));
-            }else{
-                $resultados = DB::table('checklist_questions')
-                ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
-                ->select('equipament_types.type', 'equipament_types.id')
-                ->get();
-                return view('Checklists.excluir', compact('resultados'));
-            }
+        $tipos = EquipamentType::get();
+        $cq = ChecklistQuestion::get();
+        foreach($cq as $q)
+        {
+            
+        } 
+
+
+        return view('Checklists.alterar', compact ('tipos'));
     }
+
+    // if($request->has('busca')){
+    //     $s = $request->get('busca');
+    //     $resultados = DB::table('checklist_questions')
+    //     ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
+    //     ->select('equipament_types.type', 'equipament_types.id')
+    //     ->where(function($q) use ($s){
+    //         $q->Where('type', 'LIKE', "%{$s}%");
+    //     })->paginate(15);
+    //     return view('Checklists.excluir', compact('resultados'));
+    //     }else{
+    //         $resultados = DB::table('checklist_questions')
+    //         ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
+    //         ->select('equipament_types.type', 'equipament_types.id')
+    //         ->get();
+    //         return view('Checklists.excluir', compact('resultados'));
+    //     }
 
 }
