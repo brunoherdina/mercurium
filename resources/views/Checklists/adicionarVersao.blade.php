@@ -4,6 +4,12 @@
 
 @section('content_header')
 <style>
+    .overflow{
+        overflow-y:auto;
+        overflow-x:hidden;
+        height:340px;
+    }
+
     #searchIcon{
     margin-left:10px;
     width:40px;
@@ -34,6 +40,7 @@
     .ladoDireito{
         float:right;
         max-width: 47%;
+        margin-bottom:20px;
     }
 
     #version{
@@ -67,6 +74,7 @@
         </div>
 
     <h3 style="text-align:center;"><strong>Cadastro de Checklist</strong></h3><br/><br/>
+<div class="content">
     <div class="container ladoEsquerdo">
         <div class="row">
             <form method="GET" action="#" class="form-inline" id="formBusca">
@@ -80,27 +88,31 @@
             </form>
         </div>
         <div class="row">
-            <table id="cadastradas" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Perguntas cadastradas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ( $questions as $q )
-                        <tr>
-                            <td>
-                                <input id="question" readonly name="question" value="{{ $q->name }}" style="border:none;background:transparent;width:100%;">
-                            </td>
-                            <td style="float:right;">
-                            <button class="btn btn-success add_button" type="button">
-                                <span class="fa fa-plus-circle"></span>
-                            </button>
-                            </td>
-                        </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <div class="col-sm-12">
+                <div class="overflow">
+                    <table id="cadastradas" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Perguntas cadastradas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ( $questions as $q )
+                                <tr>
+                                    <td>
+                                        <input class="question" readonly name="question" value="{{ $q->name }}" style="border:none;background:transparent;width:100%;word-wrap:break-word">
+                                    </td>
+                                    <td style="float:right;">
+                                    <button class="btn btn-success add_button" type="button">
+                                        <span class="fa fa-plus-circle"></span>
+                                    </button>
+                                    </td>
+                                </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container ladoDireito">
@@ -121,34 +133,39 @@
                     </select>
                 </div>
             </div>
+            <div class="overflow">
             <div class="form-group row">
-                <table id="modelo" class="table table-hover table-striped">
+                <div class="col-sm-12">
+                <table class="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th>Perguntas deste checklist</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                    </tbody>
+                        <tbody id="modelo">
+                            
+                        </tbody>
                 </table>
+                </div>
+            </div>
             </div>
         </form>
     </div>
+</div>
 
 
 
 
     <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script>
-    $('.add_button').click(function () {
-        var el = $('#question');
-        var value = el.attr('value');
+        $(document).on('click', '.add_button', function (){
+            var value = $(this).closest('tr').find('.question').val();
+            $('#modelo').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" style="word-wrap:break-word;">' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Remover</button> </td></tr>');
+    });
 
-        if (value) {
-           $('#modelo').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" >' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
-        }
-});
+        $(document).on('click', '.delete_button', function(){
+            $(this).closest('tr').remove();
+        });
 
 
     </script>
