@@ -13,8 +13,9 @@ class EquipamentChecklistController extends Controller
 {
     public function adicionar()
     {
+        $questions = ChecklistQuestion::get();
         $tipos = EquipamentType::get();
-        return view('Checklists.adicionar', compact('tipos'));
+        return view('Checklists.adicionarVersao', compact('tipos'), compact('questions'));
 
         $eChecklist = new EquipamentChecklist();
     }
