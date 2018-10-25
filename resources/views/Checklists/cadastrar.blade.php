@@ -26,7 +26,7 @@
         <ul id="progress">
             <li class="ativo">Versão</li>
             <li>Itens</li>
-            <li>Confirmar cadastro</li>
+            <li>Concluir cadastro</li>
         </ul>
         <fieldset>
             <h4>Versão do checklist</h4>
@@ -52,34 +52,67 @@
         </fieldset>
         <fieldset id="segundaTela">
         <h3>Itens do checklist</h3>
-        <div class="content-area">
-            <div class="form-group row">
-                <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui o item...">
-                <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span></button>
-            </div>
-            <div class="form-group row">
-                <button class="botao botao2 acao prev">Anterior</button>
-                <button class="botao botao2 acao next">Próximo</button>
-            </div>
-            <div class="form-group row">
-                <div class="overflow">
-                    <table id="table" class="table table-stripped">
-                        <thead>
-                        <tr>
-                        <th>Itens</th>
-                        </tr>
-                        </thead>
-                        <tbody id="tabela">
-                        
-                        </tbody>
-                    </table>
+            <div class="content-area">
+                <div class="form-group row">
+                    <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui o item...">
+                    <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span></button>
+                </div>
+                <div class="form-group row">
+                    <button class="botao botao2 acao prev">Anterior</button>
+                    <button class="botao botao2 acao next">Próximo</button>
+                </div>
+                <div class="form-group row">
+                    <div class="overflow">
+                        <table id="table" class="table table-stripped">
+                            <thead>
+                            <tr>
+                            <th>Itens</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabela">
+                            
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
         </fieldset>
-        <fieldset>
-            <h3>Confirmar cadastro</h3>
-            <input type="submit" value="Cadastrar">
+        <fieldset id="terceiraTela">
+            <h3>Verifique se os dados estão corretos</h3>
+            <div class="content-area">
+                <div class="form-group row">
+                    <div class="col">
+                    <label for="version">Versão:</label>
+                    <input type="text" name="version" value="V 1.0">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="type">Categoria:</label>
+                        <select name="type">
+                            <option selected>Selecione...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <button class="botao botao1 acao prev">Anterior</button>
+                    <input type="submit" value="Cadastrar">
+                </div>
+                <div class="form-group row">
+                    <div class="overflow">
+                        <table id="table2" class="table table-stripped">
+                            <thead>
+                            <tr>
+                            <th>Itens</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabela2">
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>   
         </fieldset>
     </form>
 

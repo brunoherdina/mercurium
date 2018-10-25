@@ -10,6 +10,15 @@ $(function(){
         next_fs.show(500);
     });
 
+    $('.prev').click(function(){
+        atual_fs = $(this).parent().parent().parent();
+        prev_fs = $(this).parent().parent().parent().prev();
+
+        $('#progress li').eq($('fieldset').index(atual_fs)).removeClass('ativo');
+        atual_fs.hide(500);
+        prev_fs.show(500);
+    });
+
     $('#formulario .botao').click(function(){
         return false;
     })

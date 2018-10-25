@@ -87,8 +87,6 @@
     box-sizing: border-box;
 }
 
-#formulario input, button{
-}
 
 #formulario .acao{
     height: 30px;
@@ -159,3 +157,8 @@
 /*
     Terceira tela
 */
+
+#terceiraTela{
+    height: 490px;
+}
+
