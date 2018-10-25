@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col">
                     <label for="version">Versão:</label>
-                    <input type="text" name="version" id="version">
+                    <input type="text" name="version" id="version" value="">
                     </div>
                 </div>
                 <div class="row">
@@ -42,11 +42,14 @@
                         <label for="type">Categoria:</label>
                         <select name="type">
                             <option selected>Selecione...</option>
+                            @foreach($tipos as $t)
+                            <option value="{{$t->id}}" id="type">{{ $t->type }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="row">
-                    <button class="botao botao1 acao next">Próximo</button>
+                    <button class="botao botao1 acao next" id="primeiroBotao">Próximo</button>
                 </div>
             </div>
         </fieldset>
@@ -83,20 +86,23 @@
                 <div class="form-group row">
                     <div class="col">
                     <label for="version">Versão:</label>
-                    <input type="text" name="version" value="V 1.0">
+                    <span id="versaoSpan"></span>
+                    <!-- <input type="text" name="version" value="V 1.0" id="version3"> -->
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label for="type">Categoria:</label>
-                        <select name="type">
+                        <span id="catSpan"></span>
+                        <!-- <select name="type">
                             <option selected>Selecione...</option>
-                        </select>
+                            
+                        </select> -->
                     </div>
                 </div>
                 <div class="form-group row">
                     <button class="botao botao1 acao prev">Anterior</button>
-                    <input type="submit" value="Cadastrar">
+                    <input type="submit" value="Cadastrar" class="botao botao1 acao next">
                 </div>
                 <div class="form-group row">
                     <div class="overflow">

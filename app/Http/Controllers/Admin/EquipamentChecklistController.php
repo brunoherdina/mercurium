@@ -11,13 +11,10 @@ use DB;
 
 class EquipamentChecklistController extends Controller
 {
-    public function adicionar()
+    public function novo()
     {
-        $questions = ChecklistQuestion::get();
         $tipos = EquipamentType::get();
-        return view('Checklists.adicionarVersao', compact('tipos'), compact('questions'));
-
-        $eChecklist = new EquipamentChecklist();
+        return view('Checklists.cadastrar', compact('tipos'));
     }
 
     public function store(Request $request)

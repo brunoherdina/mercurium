@@ -6,6 +6,10 @@
     padding:0;
 }
 
+.next{
+    background-color:rgba(4, 82, 4, 0.931) !important;
+}
+
 #formulario #progress{
     margin:0px;
     margin-bottom: 10px;
@@ -96,9 +100,14 @@
     color:white;
 }
 
-#formulario .acao:hover{
+#formulario .prev:hover{
     cursor: pointer;
     background-color: rgba(248, 44, 44, 0.7);
+}
+
+#formulario .next:hover{
+    cursor: pointer;
+    background-color:rgba(0, 175, 0, 0.931) !important;
 }
 
 /*Oculta todos os fieldsets, exceto o primeiro*/
@@ -162,3 +171,10 @@
     height: 490px;
 }
 
+#version3{
+    margin-left:18px;
+}
+
+#versaoSpan{
+    margin-left:18px;
+}

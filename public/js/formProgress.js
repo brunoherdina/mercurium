@@ -21,5 +21,15 @@ $(function(){
 
     $('#formulario .botao').click(function(){
         return false;
-    })
+    });
+
+    $('#primeiroBotao').click(function(){
+        var version = $('#version').val();
+        var cat = $('#type').html();
+        console.log(version);
+        console.log(cat);
+        $('#catSpan').html(cat);
+        $('#versaoSpan').html(version);
+
+    });
 });
