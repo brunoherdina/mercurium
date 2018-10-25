@@ -45,13 +45,13 @@
             </ul>
         </div>
     @endif
-    <h3 style="text-align:center;"><strong>Cadastro de perguntas</strong></h3><br/><br/>
+    <h3 style="text-align:center;"><strong>Cadastro de itens para checklist</strong></h3><br/><br/>
     <div class="container" style="max-width:900px;margin-left:210px;">
         
         <form method="POST" action="{{ route('question.store') }}">
             {{ csrf_field() }}
             <div class="form-group row">
-                <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui a pergunta...">
+                <input type="text" name="questions[]" id="pergunta" placeholder="Digite aqui o item...">
                 <button class="btn btn-success" id="adicionar" type="button"><span class="fa fa-plus-circle"></span>Adicionar</button>
                 <input type="submit" value="Finalizar e salvar" class="btn btn-primary"> 
             </div>
@@ -82,7 +82,7 @@
         var value = el.val();
 
         if (value) {
-           $('#tabela').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" style="max-width:721px;word-wrap:break-word" >' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
+           $('#tabela').append('<tr><td style="word-wrap:break-word;"><input type="hidden" name="questions[]" value="' + value + '">' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
            $('#pergunta').val("");
         }
 });

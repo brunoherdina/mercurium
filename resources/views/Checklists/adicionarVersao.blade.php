@@ -116,7 +116,7 @@
         </div>
     </div>
     <div class="container ladoDireito">
-        <form method="POST" action="#" id="#formCadastro">
+        <form method="POST" action="{{ route('checklist.store')}}" id="#formCadastro">
             <div class="form-group row">
                 <label for="version" class="col-sm-2 col-form-lavel">Versão:</label>
                 <input type="text" name="version" id="version">
@@ -153,11 +153,13 @@
     </div>
 </div>
 
-
+@stop
 
 
     <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script>
+
+        $(function(){
         $(document).on('click', '.add_button', function (){
             var value = $(this).closest('tr').find('.question').val();
             $('#modelo').append('<tr><td><input type="hidden" name="questions[]" value="' + value + '" style="word-wrap:break-word;">' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Remover</button> </td></tr>');
@@ -167,7 +169,6 @@
             $(this).closest('tr').remove();
         });
 
+    });
 
     </script>
-
-@stop

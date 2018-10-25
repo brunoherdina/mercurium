@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EquipamentChecklist extends Model
 {
     public function question(){
-        return $this->hasMany('App\Http\Model\Checklist_question');
+        return $this->hasMany('App\Http\Model\ChecklistQuestion');
     }
 
     public function equipament(){

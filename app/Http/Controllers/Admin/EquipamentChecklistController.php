@@ -28,29 +28,16 @@ class EquipamentChecklistController extends Controller
         //Pega categoria do equipamento
         $categoria = $request->categoria;
 
-        //Verifica se já existe algum checklist cadastrado para essa categoria
-        $c = ChecklistQuestion::where('equipament_type_id', $categoria);
-        if($c->count() > 0){
-            return redirect()->route('checklist.add')->with('error', 'Já existe um checklist cadastrado para essa categoria de equipamento.<br/>
-            Para cadastrar um novo checklist para essa categoria apague o anterior na seção <a href="{{ route(\'checklist.delete\')}}"><strong>Excluir</strong></a> da aba Checklists');
-        }
-
         //Filtra resultados no array das perguntas
         $questions = array_filter($questions);
         
-        //Adiciona as perguntas ao BD
-        try{
-            foreach($questions as $q)
-            {
-                $cq = new ChecklistQuestion();
-                $cq->name = $q;
-                $cq->equipament_type_id = $categoria;
-                $cq->save(); 
-            }
-        }catch(PDOException $e){
-            return redirect()->route('checklist.add')->with('error', 'Erro ao adicioar checklist: '.$e->getMessage());
+        $eChecklist = new EquipamentChecklist();
+        $eChecklist->equipament_type_id = $categoria;
+        $eChecklist->version = $request->version;
+        foreach($questions as $q)
+        {
+            $eChecklist->question = $q->id;
         }
-            return redirect()->route('checklist.add')->with('success', 'Checklist adicionado com sucesso!');
     }
 
     public function alterar()
