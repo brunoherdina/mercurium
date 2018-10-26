@@ -40,10 +40,10 @@
                 <div class="row">
                     <div class="col">
                         <label for="type">Categoria:</label>
-                        <select name="type">
+                        <select name="type" id="type">
                             <option selected>Selecione...</option>
                             @foreach($tipos as $t)
-                            <option value="{{$t->id}}" id="type">{{ $t->type }}</option>
+                            <option value="{{$t->id}}">{{ $t->type }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group row">
                     <button class="botao botao2 acao prev">Anterior</button>
-                    <button class="botao botao2 acao next">Próximo</button>
+                    <button id="segundoBotao" class="botao botao2 acao next">Próximo</button>
                 </div>
                 <div class="form-group row">
                     <div class="overflow">
@@ -127,22 +127,3 @@
 
     <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/formProgress.js') }}"></script>
-    <script>
-
-      $(document).on('click', '#adicionar', function () {
-        var el = $('#pergunta');
-        var value = el.val();
-
-        if (value) {
-           $('#tabela').append('<tr><td style="word-wrap:break-word;"><input type="hidden" name="questions[]" value="' + value + '">' + value + '<button class="btn btn-danger delete_button" type="button"style="float:right; data-question="' + value + '">Apagar</button> </td></tr>');
-           $('#pergunta').val("");
-        }
-
-    $('#tabela').on('click', '.delete_button', function(e){
-        $(this).closest('tr').remove();
-    });
-
-});
-
-
-    </script>
