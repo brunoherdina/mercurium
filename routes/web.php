@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Cadastrar checklist
     Route::get('Checklists/novo', 'Admin\EquipamentChecklistController@novo')->name('checklist.add');
+    Route::post('Checklists/novo', 'Admin\EquipamentChecklistController@store')->name('checklist.store');
 });
 
 

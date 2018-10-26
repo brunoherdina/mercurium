@@ -18,53 +18,30 @@ class EquipamentChecklistController extends Controller
     }
 
     public function store(Request $request)
-    {
-        //Pega perguntas do request
+    {    
+        try{   
+        $eq = new EquipamentChecklist();
+        $eq->version = $request->version;
+        $eq->equipament_type_id = $request->type;
+        $eq->save();
+        }catch(\PDOException $e){
+            echo "Erro: ".$e->getMessage();
+        }
+
+        $id= EquipamentChecklist::where('version', $eq->version)->get();
+        $id = $id->id;
         $questions = $request->questions;
+        $eq->storeQuestions($id, $questions);
+    }
 
-        //Pega categoria do equipamento
-        $categoria = $request->categoria;
-
-        //Filtra resultados no array das perguntas
-        $questions = array_filter($questions);
-        
-        $eChecklist = new EquipamentChecklist();
-        $eChecklist->equipament_type_id = $categoria;
-        $eChecklist->version = $request->version;
-        foreach($questions as $q)
+    private function storeQuestions($id, $questions)
+    {
+        foreach($questions as $question)
         {
-            $eChecklist->question = $q->id;
+            $cq = new ChecklistQuestion();
+            $cq->name = $question->name;
+            $cq->equipament_checklist_id = $id;
         }
     }
-
-    public function alterar()
-    {
-        $tipos = EquipamentType::get();
-        $cq = ChecklistQuestion::get();
-        foreach($cq as $q)
-        {
-            
-        } 
-
-
-        return view('Checklists.alterar', compact ('tipos'));
-    }
-
-    // if($request->has('busca')){
-    //     $s = $request->get('busca');
-    //     $resultados = DB::table('checklist_questions')
-    //     ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
-    //     ->select('equipament_types.type', 'equipament_types.id')
-    //     ->where(function($q) use ($s){
-    //         $q->Where('type', 'LIKE', "%{$s}%");
-    //     })->paginate(15);
-    //     return view('Checklists.excluir', compact('resultados'));
-    //     }else{
-    //         $resultados = DB::table('checklist_questions')
-    //         ->join('equipament_types', 'checklist_questions.equipament_type_id', '=', 'equipament_types.id')
-    //         ->select('equipament_types.type', 'equipament_types.id')
-    //         ->get();
-    //         return view('Checklists.excluir', compact('resultados'));
-    //     }
-
 }
+

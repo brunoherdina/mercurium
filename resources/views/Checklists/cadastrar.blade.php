@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <form id="formulario" method="POST">
+    <form id="formulario" method="POST" action="{{ route('checklist.store') }}">
         <ul id="progress">
             <li class="ativo">Versão</li>
             <li>Itens</li>
@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col">
                     <label for="version">Versão:</label>
-                    <input type="text" name="version" id="version" value="">
+                    <input type="text" name="version" id="version">
                     </div>
                 </div>
                 <div class="row">
@@ -87,7 +87,6 @@
                     <div class="col">
                     <label for="version">Versão:</label>
                     <span id="versaoSpan"></span>
-                    <!-- <input type="text" name="version" value="V 1.0" id="version3"> -->
                     </div>
                 </div>
                 <div class="form-group row">
@@ -101,8 +100,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <button class="botao botao1 acao prev">Anterior</button>
-                    <input type="submit" value="Cadastrar" class="botao botao1 acao next">
+                    <button class="botao botao1 acao prev" id="anterior3">Anterior</button>
+                    <input type="submit" value="Cadastrar" class="botao1 acao next">
                 </div>
                 <div class="form-group row">
                     <div class="overflow">
