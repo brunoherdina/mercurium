@@ -10,12 +10,17 @@ class ChecklistQuestion extends Model
 
     public function equipamentChecklist()
     {
-        $this->belongsToMany('App\Http\Model\Equipament_checklist');
+        $this->belongsToMany('App\Http\Model\EquipamentChecklist');
     }
 
     public function checklistAnswer()
     {
         $this->belongsTo('App\Http\Model\Checklist_answer');
+    }
+
+    public function equipamentType()
+    {
+        $this->belongsToMany('App\Http\Model\EquipamentType');
     }
 
 }

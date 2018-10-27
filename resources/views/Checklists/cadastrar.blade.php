@@ -3,7 +3,7 @@
 @section('title', 'Checklists')
 
 @section('content_header')
-<link  rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link  rel="stylesheet" href="{{ asset('css/adicionarChecklist.css') }}">
 @stop
 @section('content')
 @if (\Session::has('success'))

@@ -24,23 +24,28 @@ class EquipamentChecklistController extends Controller
         $eq->version = $request->input('version');
         $eq->equipament_type_id = $request->input('type');
         $eq->save();
-        }catch(\PDOException $e){
+        }catch(PDOException $e){
             echo "Erro: ".$e->getMessage();
-        }
+        }       
 
-        $eq2 = EquipamentChecklist::orderBY('id', 'desc')->take(1)->get();
-        $id = $eq2->id;
-        $questions = $request->questions;
-        $eq->storeQuestions($id, $questions);
+        $questions = array_filter($request->questions);
+        $this->storeQuestions($questions);
     }
 
-    private function storeQuestions($id, $questions)
+    private function storeQuestions($questions)
     {
+        $checklist = DB::table('equipament_checklists')->latest('id')->first();
+        $id = $checklist->id;
         foreach($questions as $question)
         {
+            try{
             $cq = new ChecklistQuestion();
-            $cq->name = $question->name;
+            $cq->name = $question;
             $cq->equipament_checklist_id = $id;
+            $cq->save();
+            }catch(PDOException $e){
+                echo "Erro: ".$e->getMessage();
+            }
         }
     }
 }

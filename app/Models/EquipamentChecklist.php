@@ -10,8 +10,8 @@ class EquipamentChecklist extends Model
         return $this->hasMany('App\Http\Model\ChecklistQuestion');
     }
 
-    public function equipament(){
-        return $this->hasOne('App\Http\Model\Equipament');
+    public function equipamentType(){
+        return $this->hasOne('App\Http\Model\EquipamentType');
     }
 
     public function checklist()
