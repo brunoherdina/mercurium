@@ -25,7 +25,7 @@ class EquipamentChecklistController extends Controller
         $eq->equipament_type_id = $request->input('type');
         $eq->save();
         }catch(PDOException $e){
-            echo "Erro: ".$e->getMessage();
+            return redirect()->route('checklist.add')->with('erro', 'Erro ao cadastrar checklists!');
         }       
 
         $questions = array_filter($request->questions);
@@ -44,9 +44,21 @@ class EquipamentChecklistController extends Controller
             $cq->equipament_checklist_id = $id;
             $cq->save();
             }catch(PDOException $e){
-                echo "Erro: ".$e->getMessage();
+                return redirect()->route('checklist.add')->with('erro', 'Erro ao cadastrar itens!');
             }
         }
+
+        return redirect()->route('checklist.add')->with('success', 'Checklist cadastrado com sucesso!');
+    }
+
+    public function listar()
+    {
+        $checklists = DB::table('equipament_checklists')
+        ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+        ->select('equipament_checklists.*', 'equipament_types.type')
+        ->get();
+
+        return view('Checklists.listar', compact('checklists'));
     }
 }
 

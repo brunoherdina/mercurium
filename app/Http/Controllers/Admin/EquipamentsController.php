@@ -25,7 +25,6 @@ class EquipamentsController extends Controller
         ->join('equipament_types', 'equipaments.equipament_type_id', '=', 'equipament_types.id')
         ->select('equipaments.*', 'equipament_types.type')
         ->get();
-       //$equipamentos = Equipament::get();
        return view('Equipamentos.alterarEquipamento', compact('equipamentos'));
     }
 

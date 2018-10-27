@@ -161,31 +161,12 @@ return [
                 [
                     'text' => 'Adicionar checklist',
                     'url'  => 'Checklists/novo'
+                ],
+                [
+                    'text' => 'Listar checklists',
+                    'url'  => 'Checklists/listar'
                 ]
                 
-            ],
-        ],
-
-        [
-            'text'    => 'Manutenções',
-            'icon'    => 'wrench',
-            'submenu' => [
-                [
-                    'text' => 'Veículos em manutenção',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Histórico de manutenções',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Adicionar revisão',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Buscar',
-                    'url'  => '#',
-                ],
             ],
         ],
     ],

@@ -1,0 +1,39 @@
+/*
+    Configurações da tela principal
+*/
+.container{
+    width:80%;
+    text-align:center;
+}
+
+.tabela{
+    margin:auto;
+}
+
+.acao{
+    float:right;
+    margin-left:10px;
+    width:20%;
+}
+
+/*
+    Configurações modal
+*/
+
+.checklistInfo span{
+    font-weight: bolder;
+    margin-left:10px;
+}
+.checklistInfo{
+    text-align:left;
+    margin-left:50px;
+    font-size:20px;
+}
+
+.checklistInfo .row{
+    margin-bottom:10px;
+}
+
+#version{
+    margin-left:33px;
+}
