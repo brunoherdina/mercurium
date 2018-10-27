@@ -21,15 +21,15 @@ class EquipamentChecklistController extends Controller
     {    
         try{   
         $eq = new EquipamentChecklist();
-        $eq->version = $request->version;
-        $eq->equipament_type_id = $request->type;
+        $eq->version = $request->input('version');
+        $eq->equipament_type_id = $request->input('type');
         $eq->save();
         }catch(\PDOException $e){
             echo "Erro: ".$e->getMessage();
         }
 
-        $id= EquipamentChecklist::where('version', $eq->version)->get();
-        $id = $id->id;
+        $eq2 = EquipamentChecklist::orderBY('id', 'desc')->take(1)->get();
+        $id = $eq2->id;
         $questions = $request->questions;
         $eq->storeQuestions($id, $questions);
     }

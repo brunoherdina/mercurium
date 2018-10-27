@@ -23,6 +23,7 @@
     @endif
 
     <form id="formulario" method="POST" action="{{ route('checklist.store') }}">
+    {{ csrf_field() }}
         <ul id="progress">
             <li class="ativo">Versão</li>
             <li>Itens</li>
