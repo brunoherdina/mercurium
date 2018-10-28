@@ -67,6 +67,7 @@
     margin:50px auto;
     text-align: center;
     position: relative;
+    word-break: break-all;
 }
 
 #formulario select{
@@ -144,7 +145,7 @@
 .overflow{
     overflow-y:auto;
     overflow-x:hidden;
-    height:285px;
+    height:260px;
 }
 
 #pergunta{
@@ -160,7 +161,7 @@
 }
 
 #segundaTela{
-    height: 490px;
+    height: 430px;
 }
 
 /*
@@ -168,7 +169,7 @@
 */
 
 #terceiraTela{
-    height: 490px;
+    height: 430px;
 }
 
 #version3{

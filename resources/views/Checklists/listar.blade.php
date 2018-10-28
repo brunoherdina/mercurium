@@ -36,30 +36,35 @@
                     <tr>
                         <td class="categoriaT">{{ $c->type }}</td>
                         <td class="versaoT">{{ $c->version }}</td>
-                        <td>
-                            <button class="btn btn-danger delete_button acao">Excluir</button>
+                        <td class="acoes">
+                            <form id="deleteForm" method="POST" action="{{ route( 'checklist.destroy',  ['id'=>$c->id] )}}">
+                                {{ csrf_field() }}
+                                <button class="btn btn-danger delete_button acao" type="button">Excluir</button>
+                            </form>
                             <button class="btn btn-primary show_button acao" data-toggle="modal" data-target="#modalExibir">
-                                Exibir</button>
+                                            Exibir
+                            </button>
                         </td>
+                    </tr>
                     @endforeach
-                </tbody>
-            </table>
+            </tbody>
+        </table>
     </div>
-
     <div class="modal fade" tabindex="-1" role="dialog" id="modalExibir">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Informações do Checklist</h4>
-            </div>
-            <div class="modal-body">
-                <div class="checklistInfo">
-                    <div class="row">
-                        Categoria:<span id="type"></span>
-                    </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Informações do Checklist</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="checklistInfo">
+                        <div class="row">
+                            Categoria:<span id="type"></span>
+                        </div>
                     <div class="row">
                         Versão:<span id="version"></span>
+                        <input id="versionId" type="hidden" value="">
                     </div>
                     <div class="row">
                         <table class="table table-hover" id="tableQuestions">
@@ -69,9 +74,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($questions as $q)
+                                @if ($q->equipament_checklist_id ==  $id)
                                 <tr>
-                                    <td> </td>
+                                    <td>{{$q->name}}</td>
                                 </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -80,10 +89,13 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            </div>
+        </div>
     </div>
+</div>
+
+
+   
 
 
 
@@ -91,4 +103,5 @@
 
 
     <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/listarChecklists.js') }}"></script>

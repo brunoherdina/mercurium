@@ -11,9 +11,15 @@
 }
 
 .acao{
+    width:40%;
     float:right;
     margin-left:10px;
-    width:20%;
+
+}
+
+#deleteForm{
+    margin:0;
+    padding:0;
 }
 
 /*

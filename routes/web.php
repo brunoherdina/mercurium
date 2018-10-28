@@ -62,6 +62,9 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Listar checklists
     Route::get('Checklists/listar', 'Admin\EquipamentChecklistController@listar')->name('checklist.list');
+
+    //Excluir checklist
+    Route::post('Checklists/alterar/{id}', 'Admin\EquipamentChecklistController@delete')->name('checklist.destroy');
 });
 
 

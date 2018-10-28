@@ -30,6 +30,8 @@ class EquipamentChecklistController extends Controller
 
         $questions = array_filter($request->questions);
         $this->storeQuestions($questions);
+        return redirect()->route('checklist.add')->with('success', 'Checklist cadastrado com sucesso!');
+
     }
 
     private function storeQuestions($questions)
@@ -38,17 +40,11 @@ class EquipamentChecklistController extends Controller
         $id = $checklist->id;
         foreach($questions as $question)
         {
-            try{
             $cq = new ChecklistQuestion();
             $cq->name = $question;
             $cq->equipament_checklist_id = $id;
             $cq->save();
-            }catch(PDOException $e){
-                return redirect()->route('checklist.add')->with('erro', 'Erro ao cadastrar itens!');
-            }
         }
-
-        return redirect()->route('checklist.add')->with('success', 'Checklist cadastrado com sucesso!');
     }
 
     public function listar()
@@ -58,7 +54,26 @@ class EquipamentChecklistController extends Controller
         ->select('equipament_checklists.*', 'equipament_types.type')
         ->get();
 
-        return view('Checklists.listar', compact('checklists'));
+        $questions = ChecklistQuestion::get();
+        return view('Checklists.listar', compact('checklists'), compact('questions'));
+    }
+
+    public function delete($id)
+    {   
+        try
+        {
+        $eq = EquipamentChecklist::findOrFail($id);
+        $id = $eq->id;
+        $questions = ChecklistQuestion::where('equipament_checklist_id', $id)->delete();
+        $eq->delete();
+
+            return redirect()->route('checklist.list')->with('success', 'Checklist excluído com sucesso!');
+
+        }catch(PDOException $e){
+
+            return redirect()->route('checklist.list')->with('error', 'Erro ao excluir: '.$e->getMessage());
+        }
+
     }
 }
 
