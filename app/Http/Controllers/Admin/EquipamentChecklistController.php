@@ -51,16 +51,16 @@ class EquipamentChecklistController extends Controller
     {
         $checklists = DB::table('equipament_checklists')
         ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
-        ->select('equipament_checklists.*', 'equipament_types.type')
+        ->join('checklist_questions', 'checklist_questions.equipament_checklist_id', '=', 'equipament_checklists.id')
+        ->select('equipament_checklists.*', 'equipament_types.type', 'checklist_questions.name')
         ->get();
 
-        $questions = ChecklistQuestion::get();
-        return view('Checklists.listar', compact('checklists'), compact('questions'));
+        return view('Checklists.listar', compact('checklists'));
     }
 
     public function delete($id)
     {   
-        try
+        try 
         {
         $eq = EquipamentChecklist::findOrFail($id);
         $id = $eq->id;

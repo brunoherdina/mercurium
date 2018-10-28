@@ -10,9 +10,7 @@ $(function(){
 
 		$('#version').html(version);
 		$('#type').html(type);
-		for( i=0; i<questions.length; i++){
-		$('#tableQuestions').append(questions[i]);
-		}
+		$('#tableQuestions').html(questions);
     });
 
     //Deletar checklist

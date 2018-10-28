@@ -45,11 +45,6 @@
                                             Exibir
                             </button>
                         </td>
-                            @foreach ($questions as $q)
-                            @if($c->id == $q->equipament_checklist_id)
-                                <input class="perguntas" name="perguntas[]" value="{{$q->name}}" type="hidden">
-                            @endif
-                            @endforeach
                     </tr>
                     @endforeach
             </tbody>
