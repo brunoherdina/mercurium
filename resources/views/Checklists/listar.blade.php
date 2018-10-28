@@ -45,6 +45,11 @@
                                             Exibir
                             </button>
                         </td>
+                            @foreach ($questions as $q)
+                            @if($c->id == $q->equipament_checklist_id)
+                                <input class="perguntas" name="perguntas[]" value="{{$q->name}}" type="hidden">
+                            @endif
+                            @endforeach
                     </tr>
                     @endforeach
             </tbody>
@@ -67,20 +72,14 @@
                         <input id="versionId" type="hidden" value="">
                     </div>
                     <div class="row">
-                        <table class="table table-hover" id="tableQuestions">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Itens</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($questions as $q)
-                                @if ($q->equipament_checklist_id ==  $id)
-                                <tr>
-                                    <td>{{$q->name}}</td>
-                                </tr>
-                                @endif
-                                @endforeach
+                            <tbody id="tableQuestions">
+                                
                             </tbody>
                         </table>
                     </div>

@@ -2,14 +2,17 @@ $(function(){
 
     //Exibir informações no modal
 	$('.show_button').on('click', function(){
-        var version, type;
+		var version, type, questions = new Array();
+
         version = $(this).parent().parent().find('.versaoT').html();
 		type = $(this).parent().parent().find('.categoriaT').html();
+		questions = $(this).parent().parent().find('.perguntas').val();
 
 		$('#version').html(version);
 		$('#type').html(type);
-		
-
+		for( i=0; i<questions.length; i++){
+		$('#tableQuestions').append(questions[i]);
+		}
     });
 
     //Deletar checklist
