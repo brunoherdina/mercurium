@@ -49,12 +49,14 @@ class EquipamentChecklistController extends Controller
 
     public function listar()
     {
-        $checklists = DB::table('equipament_checklists')
-        ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
-        ->join('checklist_questions', 'checklist_questions.equipament_checklist_id', '=', 'equipament_checklists.id')
-        ->select('equipament_checklists.*', 'equipament_types.type', 'checklist_questions.name')
-        ->get();
+        // $checklists = DB::table('equipament_checklists')
+        // ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+        // ->join('checklist_questions', 'checklist_questions.equipament_checklist_id', '=', 'equipament_checklists.id')
+        // ->select('equipament_checklists.*', 'equipament_types.type', 'checklist_questions.name')
+        // ->get();
 
+        $checklists = EquipamentChecklist::with(['equipamentType', 'question'])->get();
+        var_dump($checklists);
         return view('Checklists.listar', compact('checklists'));
     }
 

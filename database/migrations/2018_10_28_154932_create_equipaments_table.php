@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEquipamentTypesTable extends Migration
+class CreateEquipamentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateEquipamentTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipament_types', function (Blueprint $table) {
+        Schema::create('equipaments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->timestamps();
+            $table->binary('status');
+            $table->unsignedInteger('equipament_type_id');
+            $table->foreign('equipament_type_id')->references('id')->on('equipament_types');
         });
     }
 
@@ -27,6 +29,6 @@ class CreateEquipamentTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipament_types');
+        Schema::dropIfExists('equipaments');
     }
 }

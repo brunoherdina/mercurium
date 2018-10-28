@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'email'         =>  'brunoherdina@outlook.com',
             'password'      =>  bcrypt('1234'),
             'login'         =>  'brunoherdina',
-            'employee_position_id' =>  '2'
+            'employee_position_id' =>  '1'
 
         ]);
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeePositionsTable extends Migration
+class UpdateEquipamentTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateEmployeePositionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_positions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('position');
-            $table->string('type');
-            $table->engine = 'InnoDB';
+        Schema::table('equipament_types', function (Blueprint $table) {
+           $table->renameColumn('name', 'type');
         });
     }
 
@@ -28,6 +25,6 @@ class CreateEmployeePositionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_positions');
+        //
     }
 }

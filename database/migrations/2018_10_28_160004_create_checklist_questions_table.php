@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChecklistAnswer extends Migration
+class CreateChecklistQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class ChecklistAnswer extends Migration
      */
     public function up()
     {
-        Schema::create('checklist_answers', function (Blueprint $table) {
+        Schema::create('checklist_questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('checklist_id')->unsigned();
-            $table->foreign('checklist_id')->references('id')->on('checklists');
+            $table->string('name');
             $table->integer('equipament_checklist_id')->unsigned();
             $table->foreign('equipament_checklist_id')->references('id')->on('equipament_checklists');
-            $table->integer('checklist_question_id')->unsigned();
-            $table->foreign('checklist_question_id')->references('id')->on('checklist_questions');
-            $table->string('value');
-            });
+            $table->timestamps();
+        });
     }
 
     /**
@@ -32,6 +29,6 @@ class ChecklistAnswer extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('checklist_questions');
     }
 }
