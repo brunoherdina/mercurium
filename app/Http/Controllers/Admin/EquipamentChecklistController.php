@@ -49,14 +49,13 @@ class EquipamentChecklistController extends Controller
 
     public function listar()
     {
-        // $checklists = DB::table('equipament_checklists')
-        // ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
-        // ->join('checklist_questions', 'checklist_questions.equipament_checklist_id', '=', 'equipament_checklists.id')
-        // ->select('equipament_checklists.*', 'equipament_types.type', 'checklist_questions.name')
-        // ->get();
+        $checklists = DB::table('equipament_checklists')
+        ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+        ->select('equipament_checklists.*', 'equipament_types.type')
+        ->get();
 
-        $checklists = EquipamentChecklist::with(['equipamentType', 'question'])->get();
-        var_dump($checklists);
+        // $checklists = EquipamentChecklist::with(['question', 'equipamentType'])->get();
+        // var_dump($checklists);
         return view('Checklists.listar', compact('checklists'));
     }
 
@@ -76,6 +75,18 @@ class EquipamentChecklistController extends Controller
             return redirect()->route('checklist.list')->with('error', 'Erro ao excluir: '.$e->getMessage());
         }
 
+    }
+
+    public function show($id)
+    {
+        $checklist = EquipamentChecklist::where('equipament_checklists.id', $id)
+        ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+        ->select('equipament_checklists.*', 'equipament_types.type')
+        ->get();
+
+        $questions = ChecklistQuestion::where('equipament_checklist_id', $id)->get();
+
+        return view('Checklists.exibir', compact('checklist'), compact('questions'));
     }
 }
 

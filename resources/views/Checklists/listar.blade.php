@@ -41,50 +41,17 @@
                                 {{ csrf_field() }}
                                 <button class="btn btn-danger delete_button acao" type="button">Excluir</button>
                             </form>
-                            <button class="btn btn-primary show_button acao" data-toggle="modal" data-target="#modalExibir">
-                                            Exibir
-                            </button>
+                            <form id="showForm" method="GET" action="{{ route('checklist.show', ['id'=>$c->id]) }}">
+                                {{ csrf_field() }}
+                                <button class="btn btn-primary show_button acao" type="submit">
+                                                Exibir
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalExibir">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Informações do Checklist</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="checklistInfo">
-                        <div class="row">
-                            Categoria:<span id="type"></span>
-                        </div>
-                    <div class="row">
-                        Versão:<span id="version"></span>
-                        <input id="versionId" type="hidden" value="">
-                    </div>
-                    <div class="row">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Itens</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tableQuestions">
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            </div>
-            </div>
-        </div>
     </div>
 </div>
 

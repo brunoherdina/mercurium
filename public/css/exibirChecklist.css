@@ -1,0 +1,24 @@
+.container{
+    margin:auto;
+    width:80%;
+    text-align:center;
+}
+
+.tabela{
+     margin:auto;
+     width:80%;
+}
+
+.info{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.btn{
+    width:10%;
+}
+
+#formDelete{
+    margin:0;
+    padding:0;
+}

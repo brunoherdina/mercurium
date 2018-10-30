@@ -1,17 +1,5 @@
 $(function(){
-
-    //Exibir informações no modal
-	$('.show_button').on('click', function(){
-		var version, type, questions = new Array();
-
-        version = $(this).parent().parent().find('.versaoT').html();
-		type = $(this).parent().parent().find('.categoriaT').html();
-		questions = $(this).parent().parent().find('.perguntas').val();
-
-		$('#version').html(version);
-		$('#type').html(type);
-		$('#tableQuestions').html(questions);
-    });
+	
 
     //Deletar checklist
     $('.delete_button').on('click', function (event) {

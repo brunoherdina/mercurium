@@ -15,6 +15,6 @@ class EquipamentType extends Model
 
     public function equipamentChecklist()
     {
-        return $this->hasMany('App\Models\EquipamentChecklist');
+        return $this->belongsTo('App\Models\EquipamentChecklist');
     }
 }
