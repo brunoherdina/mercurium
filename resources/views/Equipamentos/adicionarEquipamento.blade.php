@@ -36,7 +36,7 @@
         <div class="form-group row">
         <label for="status" class="col-sm-2 col-form-label">Horimetro/KM</label>
             <div class="col-sm-3">
-                <input type="text" name="status" class="form-control" id="status">
+                <input type="text" name="km" class="form-control" id="km">
             </div>
         </div>
         <div class="form-group row">

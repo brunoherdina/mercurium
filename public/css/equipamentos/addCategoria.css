@@ -1,0 +1,28 @@
+.container{
+    margin: 0;
+    padding: 0;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.table{
+    text-align: left !important;
+    width: 80%;
+    margin: auto;
+}
+
+#formAdd{
+    margin:0;
+    padding:0;
+}
+
+.botao{
+    width: 42%;
+    float:right;
+    margin-left:10px;
+}
+
+.btn-primary{
+    width: 30%;
+}

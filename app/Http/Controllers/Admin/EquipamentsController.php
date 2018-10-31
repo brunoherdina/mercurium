@@ -33,7 +33,8 @@ class EquipamentsController extends Controller
         try{
         $eq = new Equipament();
         $eq->name = $request->input('name');
-        $eq->status = $request->input('status');
+        $eq->km = $request->input('km');
+        $eq->status = 1;
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
         return redirect()->route('equipament.store')->with('success', 'Equipamento adicionado com sucesso!');
@@ -54,7 +55,6 @@ class EquipamentsController extends Controller
         $eq = Equipament::findOrFail($id);
 
         $eq->name = $request->input('name');
-        $eq->status = $request->input('status');
         $eq->equipament_type_id = $request->input('equipament_type_id');
         $eq->save();
         return redirect()->route('equipament.list')->with('success', 'Equipamento alterado com sucesso!');

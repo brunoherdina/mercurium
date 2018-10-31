@@ -43,12 +43,6 @@
             </div>
         </div>
         <div class="form-group row">
-        <label for="status" class="col-sm-2 col-form-label">Horimetro/KM</label>
-            <div class="col-sm-3">
-                <input type="text" name="status" class="form-control" id="status" value="{{$e->status}}">
-            </div>
-        </div>
-        <div class="form-group row">
         <label for="equipament_type_id" class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-3">
                 <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">

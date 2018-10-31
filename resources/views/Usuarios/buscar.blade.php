@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Equipamentos')
+@section('title', 'Usuários')
 
 @section('content_header')
 <link rel="stylesheet"  src="{{ URL::asset('css/sweetalert2.min.css') }}">

@@ -61,7 +61,7 @@ td{
                     @forelse ( $equipamentos as $eq )
                         <tr>
                             <td>{{ $eq->name }}</td>
-                            <td> {{ $eq->status }}</td>
+                            <td> {{ $eq->km }}</td>
                             <td>{{$eq->type}}</td>
                             <td style="float:right;">
                             <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>

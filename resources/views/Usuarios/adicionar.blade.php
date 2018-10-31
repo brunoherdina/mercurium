@@ -28,7 +28,7 @@
     @endif
 
     <div class="container" style="margin-left:210px;">
-        <h3 style="margin-left:210px;"><strong>Cadastro de Usuários</strong></h3></br></br>
+        <h3 style="margin-left:210px;"><strong>Cadastro de Usuários</strong></h3><br/><br/>
 
         <form method="POST" action="{{route('user.add')}}">
         {{ csrf_field() }}
