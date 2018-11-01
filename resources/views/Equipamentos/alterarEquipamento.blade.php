@@ -4,24 +4,8 @@
 
 @section('content_header')
 <link rel="stylesheet"  src="{{ URL::asset('css/sweetalert2.min.css') }}">
-<style>
-td button{
-    width:100px;
-}
+<link rel="stylesheet"  href="{{ asset('css/equipamentos/alterarEquipamentos.css') }}">
 
-td a{
-    width:100px;
-}
-th{
-    font-size:16px;
-    width:200px;
-    text-align:center;
-}
-
-td{
-    font-size:14px;
-}
-</style>
 @stop
 
 @section('content')
@@ -40,15 +24,9 @@ td{
             </ul>
         </div>
     @endif
-<div class="container" style="max-width:800px;text-align:center;">
+<div class="container">
     <h3><strong>Equipamentos</strong></h3><br/><br/>
         <div class="row">
-            <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -63,12 +41,18 @@ td{
                             <td>{{ $eq->name }}</td>
                             <td> {{ $eq->km }}</td>
                             <td>{{$eq->type}}</td>
-                            <td style="float:right;">
-                            <a class="btn btn-warning" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a><br/><br/>
-                            <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
-                            {{ csrf_field() }}
-                            <button class="btn btn-danger delete_button" type="button">Deletar</button> 
-                            </form>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <form method="POST" action="{{ route('equipament.destroy', ['id'=>$eq->id]) }}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger delete_button botao" type="button">Deletar</button> 
+                                        </form>
+                                    </div>
+                                    <div class="col">
+                                        <a class="btn btn-warning botao" name="editar" href="{{ route('equipament.edit', ['id'=>$eq->id]) }}">Editar</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
 
@@ -77,11 +61,6 @@ td{
                         @endforelse
                     </tbody>
                 </table>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            </div>
         </div>
 </div>
 <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>

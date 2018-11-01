@@ -3,6 +3,7 @@
 @section('title', 'Equipamentos')
 
 @section('content_header')
+<link rel="stylesheet" href="{{ asset('css/equipamentos/adicionarEquipamento.css') }}">
 @stop
 
 @section('content')
@@ -22,26 +23,29 @@
         </div>
     @endif
 
-    <div class="container" style="margin-top:70px;margin-left:210px;">
-        <h3 style="margin-left:185px;"><strong>Cadastro de Equipamentos</strong></h3></br></br>
+    <div class="container">
+        <h3><strong>Cadastro de Equipamentos</strong></h3><br/><br/>
 
         <form method="POST" action="{{route('equipament.add')}}">
         {{ csrf_field() }}
-        <div class="form-group row">
-        <label for="frota" class="col-sm-2 col-form-label">Frota</label>
-            <div class="col-sm-3">
-                <input type="text" name="name" class="form-control" id="frota" value="">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Frota: </label>
+                </div>
+                <div class="col">
+                    <input type="text" name="name" class="form-control" id="frota" value="">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-        <label for="status" class="col-sm-2 col-form-label">Horimetro/KM</label>
-            <div class="col-sm-3">
-                <input type="text" name="km" class="form-control" id="km">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Horímetro/KM: </label>
+                </div>
+                <div>
+                    <input type="text" name="km" class="form-control" id="km">
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-        <label for="equipament_type_id" class="col-sm-2 col-form-label">Categoria</label>
-            <div class="col-sm-3">
+            <div class="row">
+                <label for="equipament_type_id">Categoria: </label>
                 <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Selecione...</option>
                     @foreach($tipos as $t)
@@ -49,13 +53,10 @@
                     @endforeach
                  </select>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-sm-3">
-                <input type="submit" value="Salvar" class="btn btn-primary" style="width:263px;height:40px;margin-left:196px;margin-top:20px;">
+            <div class="row">
+                <input type="submit" value="Salvar" class="btn btn-primary">
             </div>
-        </div>
         </form>
-</div>
+    </div>
 
 @stop

@@ -1,0 +1,23 @@
+.container{
+    font-family: 'Trebuchet MS', Arial;
+    width:  80%;
+    margin: auto;
+    text-align: center;
+}
+
+.table{
+    text-align: left;
+    width: 90%;
+    margin: auto;
+}
+
+form{
+    margin: 0;
+    padding: 0;
+}
+
+.botao{
+    width:42%;
+    float: right;
+    margin-left: 8%;
+}
