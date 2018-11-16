@@ -3,15 +3,7 @@
 @section('title', 'Equipamentos')
 
 @section('content_header')
-<style>
-    .botao{
-        width:263px;
-        height:40px;
-        margin-left:196px;
-        font-size:18px;
-        font-weight:bold;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/equipamentos/editarEquipamento.css') }}">
 @stop
 
 @section('content')
@@ -31,21 +23,29 @@
         </div>
     @endif
 
-    <div class="container" style="margin-top:70px;margin-left:210px;">
-        <h2 style="margin-left:202px;">Editar Equipamento</h2><br/><br/>
+    <div class="container">
+        <div class="row">
+            <h2>Editar Equipamento</h2><br/><br/>
+        </div>
 
         <form method="POST" action="{{ route('equipament.update', ['id'=>$e->id]) }}">
         {{ csrf_field() }}
-        <div class="form-group row">
-        <label for="frota" class="col-sm-2 col-form-label">Frota</label>
-            <div class="col-sm-3">
-                <input type="text" name="name" class="form-control" id="frota" value="{{$e->name}}">
+
+        <div class="row">
+            <div class="col">
+                <label for="frota">Frota</label>
+            </div>
+            <div class="col">
+                <input type="text" name="name" class="form-control text-field" id="frota" value="{{$e->name}}">
             </div>
         </div>
-        <div class="form-group row">
-        <label for="equipament_type_id" class="col-sm-2 col-form-label">Categoria</label>
-            <div class="col-sm-3">
-                <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+
+        <div class="row">
+            <div class="col">
+                <label for="equipament_type_id">Categoria</label>
+            </div>
+            <div class="col">
+                <select id="select" name="equipament_type_id">
                     <option selected>Selecione...</option>
                     @foreach($tipos as $t)
                     <option value="{{$t->id}}">{{ $t->type }}</option>
@@ -53,16 +53,20 @@
                  </select>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-3">
-                <input type="submit" value="Alterar" class="btn btn-warning botao" style="margin-top:20px;">
+
+
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Alterar" class="btn btn-warning botao">
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-3">
+
+        <div class="row">
+            <div class="col">
                 <a type="button" class="btn btn-primary botao" href="{{route ('equipament.list')}}" >Voltar</a>
             </div>
         </div>
+
         </form>
 </div>
 

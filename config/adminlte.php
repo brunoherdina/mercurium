@@ -129,7 +129,7 @@ return [
                     'url'  => 'Equipamento/cadastrar',
                 ],
                 [
-                    'text' => 'Editar equipamento',
+                    'text' => 'Listar equipamentos',
                     'url'  => 'Equipamento/alterar',
                 ],
                 [

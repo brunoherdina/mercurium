@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Retornar checklists
 
 Route::get('checklists', 'Api\EquipamentChecklistApi@index');
+
+//Logar no sistema
+Route::post('login', 'Api\UserApi@login');

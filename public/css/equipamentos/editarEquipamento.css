@@ -1,0 +1,27 @@
+.container{
+    font-family: 'Trebuchet MS', Arial;
+    width:  90%;
+    margin: auto;
+    text-align: center;
+}
+
+.botao{
+    margin: auto;
+    width: 20%;
+    height:5%;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom: 10px;
+}
+
+.text-field{
+    margin: auto;
+    width:30%;
+    margin-bottom: 10px;
+}
+
+#select{
+    margin-bottom: 20px;
+    width:20%;
+    height: 25px;
+}

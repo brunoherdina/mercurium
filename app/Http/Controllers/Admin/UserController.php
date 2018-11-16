@@ -17,7 +17,7 @@ class UserController extends Controller
         $u->name = $request->input('name');
         $u->email = $request->input('email');
         $u->matricula = $request->input('matricula');
-        $u->password = bcrypt($request->email);
+        $u->password = password_hash($request->email, PASSWORD_DEFAULT);
         $u->employee_position_id = $request->input('employee_position_id');
         $u->image = $request->input('image');
         $u->save();
@@ -58,7 +58,7 @@ class UserController extends Controller
         $u->delete();
         return redirect()->route('user.search')->with('success', 'Usuário excluido com sucesso!');
         }catch(PDOException $e){
-            return redirect()->route('user.search')->with('erro', 'Erro ao excluir: '.$e->getMessage());
+            return redirect()->route('user.search')->with('error', 'Erro ao excluir: '.$e->getMessage());
         }
     }
 
@@ -82,6 +82,26 @@ class UserController extends Controller
             ->select('users.*', 'employee_positions.type')
             ->get();
         return view('Usuarios.buscar', compact('resultados'));
+        }
+    }
+
+    public function login (Request $request)
+    {
+        $email = $request->email;
+        $senha = $request->password;
+
+        $user = DB::table('users')->where('email', $email)->first();
+        $hash = $user->password;
+
+        if(password_verify($senha, $hash))
+        {
+            if($user->employee_position_id == 1){
+                return redirect()->route('home', compact('user')); 
+            }else{
+                return redirect()->route('funcionarios', compact('user'));
+            }
+        }else{
+           return redirect()->route('login')->with('error', 'Usuário ou senha inválido!');
         }
     }
 }
