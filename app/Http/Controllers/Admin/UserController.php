@@ -100,6 +100,7 @@ class UserController extends Controller
             }else{
                 return redirect()->route('funcionarios', compact('user'));
             }
+
         }else{
            return redirect()->route('login')->with('error', 'Usuário ou senha inválido!');
         }

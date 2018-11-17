@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Mercurium')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Bem vindo ao Mercurium, !</h1>
 @stop
 
 @section('content')
-    <p>{{user->name}}</p>
+    <p>You are logged in!</p>
 @stop

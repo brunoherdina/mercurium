@@ -68,7 +68,6 @@ Route::group(['middleware' => ['auth']], function(){
 
 
 
-
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -81,4 +80,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 //*********OPERACIONAL*******
 //***************************
 
-Route::get('funcionarios', 'Admin\OperacionalController@login')->name('funcionarios');
+Route::get('Operacional', 'Admin\OperacionalController@home')->name('operacional');

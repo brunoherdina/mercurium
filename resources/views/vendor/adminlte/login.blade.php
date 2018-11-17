@@ -31,7 +31,7 @@
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Faça login para acessar o sistema</p>
-            <form action="{{route('login')}}" method="post">
+            <form action="{{ route('login')}}" method="post">
                 {!! csrf_field() !!}
 
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">

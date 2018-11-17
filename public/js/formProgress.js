@@ -86,24 +86,4 @@ $(function(){
         $(this).closest('tr').remove();
     });
 
-    //Enviar formulário
-
-    // $('#formulario').submit(function(e){
-    //     e.preventDefault();
-
-    //     var dados = $(this).serialize();
-    //     console.log(dados);
-    //     $.ajax({
-    //         type:   'POST',
-    //         url:    '/checlists/novo/cadastrar',
-    //         data:   dados,
-    //         success:function(resultado){
-    //             $('.div').html("Resultado: "+resultado);
-    //         },
-    //         error:function(){
-
-    //         }
-    //     });       
-    // });
-
 });
