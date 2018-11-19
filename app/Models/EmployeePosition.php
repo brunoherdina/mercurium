@@ -10,6 +10,6 @@ class EmployeePosition extends Model
 
     public function user()
     {
-        $this->belongsTo('App\Models\User');
+        $this->belongsTo('App\User');
     }
 }

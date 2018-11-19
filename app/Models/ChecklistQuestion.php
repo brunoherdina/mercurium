@@ -15,7 +15,7 @@ class ChecklistQuestion extends Model
 
     public function checklistAnswer()
     {
-        $this->belongsTo('App\Models\Checklist_answer');
+        $this->belongsTo('App\Models\ChecklistAnswer');
     }
 
     public function equipamentType()

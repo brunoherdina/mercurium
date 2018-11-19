@@ -94,12 +94,20 @@
                     <div class="col">
                         <label for="type">Categoria:</label>
                         <span id="catSpan"></span>
-                        <!-- <select name="type">
-                            <option selected>Selecione...</option>
-                            
-                        </select> -->
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="padrao">Deseja tornar essa versão padrão?</label>
+                        <select name="padrao">
+                            <option selected>Selecione...</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <button class="botao botao1 acao prev" id="anterior3">Anterior</button>
                     <input type="submit" value="Cadastrar" class="botao1 acao next">

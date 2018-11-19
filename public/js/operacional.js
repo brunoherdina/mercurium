@@ -1,4 +1,6 @@
 $(function(){
+
+    var km;
     $('#item1').on('click', function(){
         $('#fs1').show();
         $('#fs2').hide();
@@ -46,4 +48,5 @@ $(function(){
         $('#icon2').removeClass('active');
         $('#icon3').removeClass('active');
     });
+
 });

@@ -16,9 +16,8 @@ class UsersTableSeeder extends Seeder
             'name'          =>  'Bruno Herdina',
             'email'         =>  'brunoherdina@outlook.com',
             'password'      =>  bcrypt('1234'),
-            'login'         =>  'brunoherdina',
-            'employee_position_id' =>  '1'
-
+            'employee_position_id' =>  '1',
+            'matricula' => '30027482'
         ]);
     }
 }

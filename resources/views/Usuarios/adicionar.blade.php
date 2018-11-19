@@ -61,6 +61,17 @@
                     @endforeach
                 </select>
             </div>
+
+            <div class="row">
+                <label for="funcao">Equipamento de trabalho: </label>
+                <select name="categoria" required>
+                    <option selected>Selecione...</option>
+                    @foreach($categorias as $c)
+                    <option value="{{$c->id}}">{{ $c->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="row">
                 <input type="submit" value="Salvar" class="btn btn-primary">
             </div>

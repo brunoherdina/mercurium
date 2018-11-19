@@ -8,6 +8,7 @@ use App\Models\ChecklistQuestion;
 use App\Models\EquipamentChecklist;
 use App\Models\EquipamentType;
 use DB;
+use Doctrine\DBAL\Driver\PDOException;
 
 class EquipamentChecklistController extends Controller
 {
@@ -23,7 +24,24 @@ class EquipamentChecklistController extends Controller
         $eq = new EquipamentChecklist();
         $eq->version = $request->input('version');
         $eq->equipament_type_id = $request->input('type');
+        $padrao = $request->input('padrao');
+        
+        //Define todos os outras versões como in_use 0
+        if($padrao == '1'){
+            try{
+                $checklists = EquipamentChecklist::where('equipament_type_id', $eq->equipament_type_id)->get();
+                foreach($checklists as $c){
+                    $c->in_use = 0;
+                    $c->save();
+                }
+            }catch(PDOException $e){
+                return redirect()->route('checklist.add')->with('erro', 'Erro selecionar vesão padrão!');
+            }
+        }
+
+        $eq->in_use = $padrao;
         $eq->save();
+
         }catch(PDOException $e){
             return redirect()->route('checklist.add')->with('erro', 'Erro ao cadastrar checklists!');
         }       
@@ -54,8 +72,6 @@ class EquipamentChecklistController extends Controller
         ->select('equipament_checklists.*', 'equipament_types.type')
         ->get();
 
-        // $checklists = EquipamentChecklist::with(['question', 'equipamentType'])->get();
-        // var_dump($checklists);
         return view('Checklists.listar', compact('checklists'));
     }
 
@@ -67,9 +83,9 @@ class EquipamentChecklistController extends Controller
         $id = $eq->id;
         $questions = ChecklistQuestion::where('equipament_checklist_id', $id)->delete();
         $eq->delete();
-
-            return redirect()->route('checklist.list')->with('success', 'Checklist excluído com sucesso!');
-
+            
+                return redirect()->route('checklist.list')->with('success', 'Checklist excluído com sucesso!');
+            
         }catch(PDOException $e){
 
             return redirect()->route('checklist.list')->with('error', 'Erro ao excluir: '.$e->getMessage());

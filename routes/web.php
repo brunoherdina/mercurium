@@ -1,6 +1,4 @@
 <?php
-//LOGIN
-Route::post('login', 'Admin\UserController@login');
 
 //***************************
 //*********ADMINISTRADORES***
@@ -37,8 +35,11 @@ Route::group(['middleware' => ['auth']], function(){
 
 Route::group(['middleware' => ['auth']], function(){
 
+    //LOGIN
+    Route::post('login', 'Admin\UserController@login');
+
     //Cadastro de usuários
-    Route::get('Usuarios/cadastrar', 'Admin\EmployeePositionController@getAll')->name('user.add');
+    Route::get('Usuarios/cadastrar', 'Admin\UserController@getAll')->name('user.add');
     Route::post('Usuarios/cadastrar', 'Admin\UserController@store')->name('user.store');
 
     //Buscar usuário
@@ -80,4 +81,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //*********OPERACIONAL*******
 //***************************
 
-Route::get('Operacional', 'Admin\OperacionalController@home')->name('operacional');
+Route::group(['middleware' => ['auth']], function(){
+
+    //Carregar home
+    Route::get('Operacional', 'Admin\OperacionalController@home')->name('operacional');
+
+    //Salvar checklist
+    Route::post('Operacional', 'Admin\OperacionalController@storeChecklist')->name('operacional.storeChecklist');
+});

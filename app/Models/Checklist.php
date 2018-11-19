@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Checklist extends Model
 {
     public function user(){
-        return $this->hasOne('user');
+        return $this->hasOne('App\User');
     }
 
     public function equipamentChecklist(){
-        return $this->hasOne('App\Http\Model\Equipament_checklist');
+        return $this->hasOne('App\Models\EquipamentChecklist');
     }
 
     public function checklistAnswer()
     {
-        $this->belongsTo(Location::class);
+        $this->belongsTo('App\Models\ChecklistAnswer');
     }
 }

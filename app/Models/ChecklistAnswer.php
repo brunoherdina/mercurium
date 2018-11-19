@@ -7,15 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class ChecklistAnswer extends Model
 {
     public function checklist(){
-        return $this->hasOne('App\Http\Model\Checklist');
+        return $this->hasOne('App\Models\Checklist');
     }
 
     public function equipamentChecklist(){
-        return $this->hasOne('App\Http\Model\Equipament_checklist');
+        return $this->hasOne('App\Models\EquipamentChecklist');
     }
 
     public function question(){
-        return $this->hasMany('App\Http\Model\Checklist_question');
+        return $this->hasOne('App\Models\ChecklistQuestion');
     }
-    public $timestamps = false;
 }

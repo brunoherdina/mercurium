@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\EmployeePosition;
+use App\Models\EquipamentType;
 use DB;
 
 class UserController extends Controller
@@ -20,6 +21,7 @@ class UserController extends Controller
         $u->password = password_hash($request->email, PASSWORD_DEFAULT);
         $u->employee_position_id = $request->input('employee_position_id');
         $u->image = $request->input('image');
+        $u->equipament_type_id = $request->input('categoria');
         $u->save();
         return redirect()->route('user.add')->with('success', 'Usuário cadastrado com sucesso!');
         }catch(PDOException $e)
@@ -104,5 +106,12 @@ class UserController extends Controller
         }else{
            return redirect()->route('login')->with('error', 'Usuário ou senha inválido!');
         }
+    }
+
+    public function getAll()
+    {
+        $niveis = EmployeePosition::get();
+        $categorias = EquipamentType::get();
+       return view('Usuarios.adicionar', compact('niveis'), compact('categorias'));
     }
 }
