@@ -27,10 +27,13 @@ class OperacionalController extends Controller
 
         $meusChecklists = DB::table('checklists')
         ->where('user_id', '=', $user->id)
-        ->join('equipament_checklists', 'checklists.equipament_checklist_id', '=', 'equipament_checklist.id')
-        
-        ->select('equipament_checklists.*', 'equipament_types.type')
+        ->join('equipament_checklists', 'checklists.equipament_checklist_id', '=', 'equipament_checklists.id')
+        ->join('equipaments', 'checklists.equipament_id', '=', 'equipaments.id')
+        ->select('checklists.*', 'equipament_checklists.version', 'equipaments.name')
         ->get();
+
+
+        // ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
         
         return view('Operacional.home', [
             'user' => $user,
@@ -56,7 +59,7 @@ class OperacionalController extends Controller
         $checklist = new Checklist();
         $checklist->user_id = $user->id;
         $checklist->equipament_checklist_id = $request->input('checklist_id');
-        $checklist->equipament_type_id = $request->input('frota');
+        $checklist->equipament_id = $request->input('frota');
         $checklist->hInicial = $equipament->km;
         $checklist->hFinal = $request->input('hFinal');
         $checklist->parecer_final = $request->input('parecerFinal');
@@ -99,5 +102,16 @@ class OperacionalController extends Controller
                 $answer->save();
             }
         }
+    }
+
+    public function showChecklist($id)
+    {
+        // $checklist = DB::table('checklists')
+        // ->where('checklist_id', '=', $id)
+        // ->join('equipament_checklists', 'checklists.equipament_checklist_id', '=', 'equipament_checklists.id')
+        // ->join('equipaments', 'checklists.equipament_id', '=', 'equipaments.id')
+        // ->join('checklist_questions', 'equipament_checklists.checklist_question_id', '=', 'checklist_questions.id')
+        // ->select('checklists.*', 'equipament_checklists.version', 'equipaments.name')
+        // ->get();
     }
 }

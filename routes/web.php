@@ -88,4 +88,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Salvar checklist
     Route::post('Operacional', 'Admin\OperacionalController@storeChecklist')->name('operacional.storeChecklist');
+
+    //Exibir checklist
+    Route::get('Operacional/{id}', 'Admin\OperacionalController@showChecklist')->name('operacional.showChecklist');
 });

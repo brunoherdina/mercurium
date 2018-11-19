@@ -51,17 +51,21 @@
             </div>
         </div>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered tabela-checklists">
             <tr>
                 <th>Frota</th>
                 <th>Data</th>
                 <th></th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td class="acaoExibir">Exibir</td>
-            </tr>
+            @foreach($meusChecklists as $mc)
+            <form method="GET" id="formExibir" action="{{ route('operacional.showChecklist',  ['id'=>$mc->id] ) }}">
+                <tr class="mChecklists">
+                    <td class="tdChecklist1">{{$mc->name}}</td>
+                    <td class="tdChecklist1">{{$mc->created_at}}</td>
+                    <td class="tdChecklist2"><button type="submit" class="btn btn-primary exibir">Exibir</button></td>
+                </tr>
+            </form>
+            @endforeach
         </table>
     </fieldset>
 

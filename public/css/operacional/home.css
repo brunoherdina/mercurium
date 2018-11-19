@@ -1,6 +1,6 @@
 
 
-/* Configurações gerais */
+        /* Configurações gerais */
 body{
     margin: 0;
     padding: 0;
@@ -64,7 +64,7 @@ hr{
     margin: auto;
 }
 
-/* Configuração das telas */
+        /* Configuração dos fieldsets */
 fieldset{
     margin: 0;
     padding: 0;
@@ -73,7 +73,7 @@ fieldset:not(:first-of-type){
     display: none;
 }
 
-/* Meus checklists */
+        /* Meus checklists */
 
 .searchChecklist{
     position: absolute;
@@ -100,7 +100,26 @@ fieldset:not(:first-of-type){
     width: 8%;
 }
 
-/* Novo checklist */
+.tabela-checklists{
+    font-size: 40px;
+}
+
+#formExibir{
+    margin: 0;
+    padding: 0;
+}
+
+.tdChecklist1{
+    width: 35%;
+}
+
+.exibir{
+    width:100%;
+    height: 80px;
+    font-size: 40px !important;
+}
+
+        /* Novo checklist */
 
 .selecaoFrota{
     width: 100%;
