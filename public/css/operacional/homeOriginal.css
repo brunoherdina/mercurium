@@ -11,10 +11,10 @@ hr{
     height: 2px;
     background-color: #000;
 }
-.topo{
+.container{
     margin: auto;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     width: 100% !important;
 }
 
@@ -73,7 +73,51 @@ fieldset:not(:first-of-type){
     display: none;
 }
 
- 
+        /* Meus checklists */
+
+.searchChecklist{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+#campoBusca{
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    float: left;
+    width: 77%;
+    height: 5%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 43px;
+}
+
+#searchIcon{
+    margin-top: 3%;
+    margin-bottom: 2%;
+    width: 8%;
+}
+
+.tabela-checklists{
+    font-size: 40px;
+}
+
+#formExibir{
+    margin: 0;
+    padding: 0;
+}
+
+.tdChecklist1{
+    width: 35%;
+}
+
+.exibir{
+    width:100%;
+    height: 80px;
+    font-size: 40px !important;
+}
 
         /* Novo checklist */
 

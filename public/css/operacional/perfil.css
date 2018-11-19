@@ -1,0 +1,17 @@
+.titulo{
+    margin-bottom: 30px;
+}
+
+.info{
+    width: 80%;
+    text-align: center;
+    font-size: 50px;
+}
+
+.alterar{
+    color: white !important;
+    font-size: 60px !important;
+    width: 50%;
+    margin-top: 30px;
+
+}

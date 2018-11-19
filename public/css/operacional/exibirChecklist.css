@@ -1,0 +1,39 @@
+
+table{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.col{
+    width: 50% !important;
+}
+.perguntas{
+    text-align: right;
+    width: 100%;
+    font-size: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 16px !important;
+    margin-left: 15px !important;
+}
+
+.respostas{
+    width: 100%;
+    text-align:left;
+    font-size: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.info{
+    font-size: 40px;
+    text-align: center;
+    word-wrap: wrap;
+    margin-top: 10px;
+}
+
+.voltar{
+    margin-top: 20px !important;
+    margin-left: 30%;
+    width: 40%;
+    font-size: 50px !important;
+}

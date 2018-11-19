@@ -83,12 +83,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function(){
 
-    //Carregar home
-    Route::get('Operacional', 'Admin\OperacionalController@home')->name('operacional');
+
+    //Meus checklists
+    Route::get('Operacional', 'Admin\OperacionalController@myChecklists')->name('operacional.myChecklists');
+
+    //Novo checklists
+    Route::get('Operacional/novo', 'Admin\OperacionalController@newChecklist')->name('operacional.newChecklist');
 
     //Salvar checklist
-    Route::post('Operacional', 'Admin\OperacionalController@storeChecklist')->name('operacional.storeChecklist');
+    Route::post('Operacional/novo', 'Admin\OperacionalController@storeChecklist')->name('operacional.storeChecklist');
 
     //Exibir checklist
-    Route::get('Operacional/{id}', 'Admin\OperacionalController@showChecklist')->name('operacional.showChecklist');
+    Route::get('Operacional/exibir/{id}', 'Admin\OperacionalController@showChecklist')->name('operacional.showChecklist');
+
+    //Perfil
+    Route::get('Operacional/perfil', 'Admin\OperacionalController@showProfile')->name('operacional.profile');
+
+    //Alterar senha
+    Route::get('Operacional/perfil/alterarSenha', function() {
+        return view('Operacional.alterarSenha');
+    })->name('operacional.alterarSenha');
 });
