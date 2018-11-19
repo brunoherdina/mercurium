@@ -7,7 +7,14 @@
 @endsection
 <link rel="stylesheet" href="{{ asset('css/operacional/perfil.css') }}">
 @section('content')
-    @if (\Session::has('success'))
+
+        <div class="row titulo">
+            <div class="col">
+                <div class="page-title">Alterar senha</div>
+            </div>
+        </div>
+
+         @if (\Session::has('success'))
     <div class="alert alert-success">
         <ul style="list-style: none; padding: 0;">
             <li>{!! \Session::get('success') !!}</li>
@@ -23,14 +30,26 @@
     </div>
         @endif
 
-        <div class="row titulo">
-            <div class="col">
-                <div class="page-title">Alterar senha</div>
-            </div>
-        </div>
-
          
-    
+        <form method="POST" class="formulario" action="{{ route('operacional.passwordUpdate', ['id'=>$user->id])}}">
+            <div class="form-group-row">
+                <label for="senhaAtual">Senha atual:</label>
+                <input type="password" name="senhaAtual">
+            </div>
+            <div class="form-group-row">
+                <label for="novaSenha1">Nova senha:</label>
+                <input type="password" name="novaSenha1" id="senha1">
+            </div>
+            <div class="form-group-row">
+                <label for="novaSenha2">Confirme a senha:</label>
+                <input type="password" name="novaSenha2" id="senha2">
+            </div>
+
+            <div class="form-group-row">
+                <input type="button" class="btn btn-primary alterar" value="Alterar" id="enviar">
+            </div>
+
+        </form>
 
         
 

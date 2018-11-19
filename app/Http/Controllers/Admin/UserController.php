@@ -43,7 +43,7 @@ class UserController extends Controller
 
             $u->name = $request->input('name');
             $u->email = $request->input('email');
-            $u->password = $request->input('password');
+            $u->password = password_hash($request->input('password'), PASSWORD_DEFAULT);
             $u->login = $request->login('login');
             $u->employee_position_id = $request->input('employee_position_id');
             $u->image = $request->input('image');

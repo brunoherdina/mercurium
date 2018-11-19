@@ -170,4 +170,27 @@ class OperacionalController extends Controller
         ]);
     }
 
+    public function alterarSenha(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        
+        $senha = $request->input('senhaAtual');
+
+        $hash = $user->password;
+
+        if(password_verify($senha, $hash))
+        {
+            $user->password = password_hash($senha, PASSWORD_DEFAULT);
+            return redirect()->route('operacional.alterarSenha')->with('success', 'Senha alterada com sucesso!');
+        }else{
+            return redirect()->route('operacional.alterarSenha')->with('error', 'A senha digitada não condiz com nossos registros!');
+        }
+    }
+
+    public function logout()
+    {
+            Auth::logout();
+            return redirect("/login");
+        
+    }
 }

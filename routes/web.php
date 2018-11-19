@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Excluir checklist
     Route::post('Checklists/alterar/{id}', 'Admin\EquipamentChecklistController@delete')->name('checklist.destroy');
+
+    //Tornar checklist padrão
+    Route::post('Checklists/listar/tornarPadrao/{id}', 'Admin\EquipamentChecklistController@tornarPadrao')->name('checklist.inUse');
 });
 
 
@@ -101,6 +104,19 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Alterar senha
     Route::get('Operacional/perfil/alterarSenha', function() {
-        return view('Operacional.alterarSenha');
+        $user = Auth::user();
+        return view('Operacional.alterarSenha', [
+            'user' => $user,
+        ]);
     })->name('operacional.alterarSenha');
+
+    Route::post('Operacional/perfil/alterarSenha/{id}', 'Admin\OperacionalController@alterarSenha')->name('operacional.passwordUpdate');
+
+    //Informações
+    Route::get('Operacional/info', function(){
+        return view('Operacional.informacoes');
+    })->name('operacional.info');
+
+    //Logout
+    Route::get('Operacional/logout', 'Admin\OperacionalController@logout')->name('logout');
 });

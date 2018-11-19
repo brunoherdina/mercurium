@@ -1,6 +1,8 @@
 
 
         /* Configurações gerais */
+
+
 body{
     margin: 0;
     padding: 0;
@@ -13,8 +15,6 @@ hr{
 }
 .topo{
     margin: auto;
-    margin: 0 !important;
-    padding: 0 !important;
     width: 100% !important;
 }
 
@@ -25,6 +25,7 @@ hr{
 }
 
 .menu{ 
+    width: 100% !important;
     padding-top:2%;
     margin: auto;
     position: block;
@@ -39,6 +40,7 @@ hr{
 }
 
 .menu ul{
+    width: 100% !important;
     margin: 0;
     padding: 0;
     padding-top: 1%;
@@ -51,6 +53,7 @@ hr{
     display: inline;
     margin-left:4%;
     margin-right:4%;
+    width: 100% !important;
 }
 
 .page-title{
@@ -62,121 +65,4 @@ hr{
     min-height: 6%;
     font-size: 70px;
     margin: auto;
-}
-
-        /* Configuração dos fieldsets */
-fieldset{
-    margin: 0;
-    padding: 0;
-}
-fieldset:not(:first-of-type){
-    display: none;
-}
-
- 
-
-        /* Novo checklist */
-
-.selecaoFrota{
-    width: 100%;
-    font-size:60px;
-    text-align: center;
-    padding-top:2%;
-}
-
-#labelFrota{
-    margin-top: 10px;
-}
-
-#frota{
-    width: 70%;
-    height: 5%;
-    font-size:35px;
-}
-
-.horimetros{
-    width:90%;
-    text-align: center;
-}
-
-.row-horimetro{
-    padding-top: 2%;
-    padding-bottom: 3%;
-    height: 5%;
-    font-size: 40px;
-}
-.row-horimetro label{
-    float: left;
-    width: 60%;
-}
-
-.row-horimetro input{
-    float: right;
-    width:40%;
-    font-size: 40px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.final{
-    padding-bottom: 0 !important;
-}
-
-.questions{
-    width: 100%;
-}
-
-.questions table{
-    width: 100%;
-    font-size: 40px;
-}
-
-#tableTitle{
-    font-size: 45px;
-    text-align: center !important;
-}
-
-.questions table tr{
-    font-size:60px;
-    word-wrap: wrap;
-    min-height: 8%;
-}
-
-.respostas{
-    width: 100%;
-    height: 8%;
-    font-size: 30px;
-    margin-top: 15px !important;
-}
-
-.condicao{
-    width: 100%;
-    font-size: 50px;
-    text-align: center;
-}
-
-.parecer{
-    font-size: 30px !important;
-}
-
-.salvar{
-    width: 40%;
-    height: 6%;
-    font-size: 40px !important;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 30%;
-}
-
-.observacao{
-    width: 100%;
-}
-
-.obTextArea{
-    width: 80%;
-    margin-left: 10%;
-    font-size: 32px;
-    height: 8%;
-    border: 1px solid #000;
 }

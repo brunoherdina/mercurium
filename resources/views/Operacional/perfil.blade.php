@@ -61,6 +61,12 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col info">
+                <a class="btn btn-primary alterar" href="{{route('logout')}}">Logout</a>
+            </div>
+        </div>
+
         
 
 

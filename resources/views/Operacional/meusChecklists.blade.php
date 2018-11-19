@@ -27,12 +27,12 @@
         </ul>
     </div>
         @endif
-    <div class="row" class="searchChecklist">
+    <!-- <div class="row" class="searchChecklist">
         <div class="col">
             <input type="text" name="buscaChecklist"  placeholder="Buscar checklist..." id="campoBusca">
             <img id="searchIcon" src="{{ URL::asset('assets/icons/search-icon.png') }}">
         </div>
-    </div>
+    </div> -->
 
     <table class="table table-bordered tabela-checklists">
         <tr>

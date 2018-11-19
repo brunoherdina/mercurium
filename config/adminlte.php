@@ -115,12 +115,6 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-            
-        [
             'text'    => 'Equipamentos',
             'icon'    => 'car',
             'submenu' => [

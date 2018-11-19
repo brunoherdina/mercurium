@@ -1,0 +1,10 @@
+.titulo{
+    font-size: 80px;
+}
+
+.texto{
+    margin: auto !important;
+    width: 90% !important;
+    text-align: center;
+    font-size: 42px;
+}

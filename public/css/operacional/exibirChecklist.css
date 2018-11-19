@@ -37,3 +37,8 @@ table{
     width: 40%;
     font-size: 50px !important;
 }
+
+.alert{
+    font-size: 50px;
+    word-wrap: wrap;
+}

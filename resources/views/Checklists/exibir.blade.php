@@ -36,6 +36,10 @@
             <a class="btn btn-primary" href="{{ route('checklist.list')}}">Voltar</a>
             <button class="btn btn-danger delete_button" type="button">Excluir</button>
         </form>
+        <form id="formPadrao" method="POST" action="{{ route('checklist.inUse', ['id'=>$c->id])}}">
+            {{ csrf_field() }}
+            <button class="btn btn-success padrao" type="submit">Definir como padrão</a>
+        </form>
        
     </div>
 

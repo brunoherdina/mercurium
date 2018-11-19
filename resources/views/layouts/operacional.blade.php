@@ -7,8 +7,6 @@
 <body>
     @section('menu')
     <div class="topo">
-        <div class="row">
-            <div class="col">
                 <div class="menu">
                     <ul>
                         <li>
@@ -22,12 +20,10 @@
                             <a id="item3" href="{{ route('operacional.profile') }}"><img class="icon" id="icon3" src="{{ URL::asset('assets/icons/user-icon.png') }}"></a>
                         </li>
                         <li>
-                            <a id="item4"><img class="icon" id="icon4"  src="{{ URL::asset('assets/icons/help-icon.png') }}"></a>
+                            <a id="item4" href="{{ route('operacional.info') }}"><img class="icon" id="icon4"  src="{{ URL::asset('assets/icons/help-icon.png') }}"></a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
     </div>
     <div class="conteudo">
         @yield('content')

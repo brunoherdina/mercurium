@@ -5,7 +5,7 @@
 @section('menu')
 
 @endsection
-
+<link rel="stylesheet" href="{{ asset('css/operacional/novo.css') }}">
 @section('content')
     @if (\Session::has('success'))
     <div class="alert alert-success">

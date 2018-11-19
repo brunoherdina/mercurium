@@ -13,5 +13,30 @@
     font-size: 60px !important;
     width: 50%;
     margin-top: 30px;
+}
 
+.formulario{
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    text-align: center !important;
+}
+
+.form-group-row{
+    margin-top: 30px !important;
+    font-size: 40px !important;
+}
+.form-group-row label{
+    width: 70% !important;
+}
+
+.form-group-row input{
+    width: 70% !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px !important;
+}
+
+.alert{
+    font-size: 40px;
+    word-wrap: wrap;
 }

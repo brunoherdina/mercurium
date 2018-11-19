@@ -104,5 +104,25 @@ class EquipamentChecklistController extends Controller
 
         return view('Checklists.exibir', compact('checklist'), compact('questions'));
     }
+
+    public function tornarPadrao(Request $request)
+    {   
+        $checklist = EquipamentChecklist::findOrFail($request->id);
+        $allChecklists = EquipamentChecklist::where('equipament_type_id', $checklist->equipament_type_id)->get();
+        
+        foreach($allChecklists as $ac)
+        {   
+            $ac->in_use = 0;
+            $ac->save();
+        }
+
+        try{
+        $checklist->in_use = 1;
+        $checklist->save();
+        return redirect()->route('checklist.list')->with('success', 'Checklist definido como padrão!');
+        }catch(PDOException $e){
+            return redirect()->route('checklist.list')->with('error', 'Erro ao tornar checklist padrão!');
+        }
+    }
 }
 

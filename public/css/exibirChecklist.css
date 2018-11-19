@@ -7,11 +7,13 @@
 .tabela{
      margin:auto;
      width:80%;
+     text-align: center !important;
 }
 
 .info{
     font-size:20px;
     margin-bottom:10px;
+    text-align: center !important;
 }
 
 .btn{
@@ -21,4 +23,9 @@
 #formDelete{
     margin:0;
     padding:0;
+}
+
+.padrao{
+    width: 20% !important;
+    margin-top: 10px;
 }
