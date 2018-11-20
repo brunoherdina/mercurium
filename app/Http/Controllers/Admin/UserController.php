@@ -122,4 +122,29 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function alterarSenha(Request $request)
+    {
+        $user = Auth::user();
+        
+        $senha = $request->input('senhaAtual');
+        $novaSenha1 = $request->input('novaSenha1');
+        $novaSenha2 = $request->input('novaSenha2');
+        $hash = $user->password;
+
+        if(password_verify($senha, $hash))
+        {
+            if($novaSenha1 == $novaSenha2){
+                try{
+                    $user->password = password_hash($novaSenha1, PASSWORD_DEFAULT);
+                    $user->save();
+                    return redirect()->route('user.profile')->with('success', 'Senha alterada com sucesso!');
+                }catch(PDOException $e){
+                    return redirect()->route('user.profile')->with('error', 'Falha ao alterar senha'. $e->getMessage());
+                }
+            }
+        }else{
+            return redirect()->route('user.profile')->with('error', 'A senha digitada não condiz com nossos registros!');
+        }
+    }
 }

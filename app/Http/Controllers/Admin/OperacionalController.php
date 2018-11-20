@@ -175,13 +175,22 @@ class OperacionalController extends Controller
         $user = User::findOrFail($id);
         
         $senha = $request->input('senhaAtual');
-
+        $novaSenha1 = $request->input('novaSenha1');
+        $novaSenha2 = $request->input('novaSenha2');
         $hash = $user->password;
 
         if(password_verify($senha, $hash))
         {
-            $user->password = password_hash($senha, PASSWORD_DEFAULT);
-            return redirect()->route('operacional.alterarSenha')->with('success', 'Senha alterada com sucesso!');
+            if($novaSenha1 == $novaSenha2){
+                try{
+                    $user->password = password_hash($novaSenha1, PASSWORD_DEFAULT);
+                    $user->save();
+                    return redirect()->route('operacional.alterarSenha')->with('success', 'Senha alterada com sucesso!');
+                }catch(PDOException $e){
+                    return redirect()->route('operacional.alterarSenha')->with('error', 'Falha ao alterar: '.$e->getMessage());
+                }
+            }
+            
         }else{
             return redirect()->route('operacional.alterarSenha')->with('error', 'A senha digitada não condiz com nossos registros!');
         }

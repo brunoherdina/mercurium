@@ -4,12 +4,13 @@
     margin-bottom: 40px;
 }
 
-.itens{
+#itens{
     width: 80%;
     font-size: 20px;
 }
 
 .conteudo{
+    margin-top: 30px !important;
     width: 30%;
     margin: auto;
     text-align: center;
@@ -28,6 +29,7 @@ fieldset{
     margin: auto;
     margin-right: 100px;
     margin-top: 20px;
+    display: none;
 }
 .senhas{
     width: 40%;
@@ -41,4 +43,20 @@ fieldset label{
     margin: auto !important;
     margin-top: 20px;
     margin-bottom: 25px !important;
+}
+
+.senhaItens input{
+    width: 53%;
+}
+
+#enviar{
+    text-align: center;
+    width: 53%;
+    margin-left: 125px;
+}
+#voltar{
+    margin-top: 10px;
+    text-align: center;
+    width: 53%;
+    margin-left: 125px;
 }

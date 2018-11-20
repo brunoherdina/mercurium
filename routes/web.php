@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth']], function(){
     //Perfil
     Route::get('Perfil', 'Admin\UserController@showProfile')->name('user.profile');
 
+    //Alterar senha
+    Route::post('Perfil', 'Admin\UserController@alterarSenha')->name('user.changePassword');
+
     
 });
 
