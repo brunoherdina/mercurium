@@ -28,23 +28,16 @@
 
         <form method="POST" action="{{route('equipament.add')}}">
         {{ csrf_field() }}
-            <div class="row">
-                <div class="col">
+            <div class="form-group-row">
                     <label for="name">Frota: </label>
-                </div>
-                <div class="col">
                     <input type="text" name="name" class="form-control" id="frota" value="">
-                </div>
             </div>
-            <div class="row">
-                <div class="col">
+
+            <div class="form-group-row">
                     <label for="name">Horímetro/KM: </label>
-                </div>
-                <div>
                     <input type="text" name="km" class="form-control" id="km">
-                </div>
             </div>
-            <div class="row">
+            <div class="form-group-row categoria">
                 <label for="equipament_type_id">Categoria: </label>
                 <select name="equipament_type_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Selecione...</option>
@@ -53,9 +46,9 @@
                     @endforeach
                  </select>
             </div>
-            <div class="row">
-                <input type="submit" value="Salvar" class="btn btn-primary">
-            </div>
+            <br/>
+            <br/>
+                <input type="submit" value="Salvar" class="btn btn-primary salvar">
         </form>
     </div>
 

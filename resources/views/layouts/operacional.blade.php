@@ -6,24 +6,22 @@
     </head>
 <body>
     @section('menu')
-    <div class="topo">
-                <div class="menu">
-                    <ul>
-                        <li>
-                            <a id="item1" href="{{ route('operacional.myChecklists') }}"><img class="icon" id="icon1" src="{{ URL::asset('assets/icons/checklist-icon.png')}}"></a>
-                        </li>
+    <div class="menu">
+        <ul>
+            <li>
+                <a id="item1" href="{{ route('operacional.myChecklists') }}"><img class="icon" id="icon1" src="{{ URL::asset('assets/icons/checklist-icon.png')}}"></a>
+            </li>
 
-                    <li>
-                        <a id="item2" href="{{ route('operacional.newChecklist') }}"><img class="icon" id="icon2" src="{{ URL::asset('assets/icons/new-icon.png') }}"></a>
-                        </li>
-                        <li>
-                            <a id="item3" href="{{ route('operacional.profile') }}"><img class="icon" id="icon3" src="{{ URL::asset('assets/icons/user-icon.png') }}"></a>
-                        </li>
-                        <li>
-                            <a id="item4" href="{{ route('operacional.info') }}"><img class="icon" id="icon4"  src="{{ URL::asset('assets/icons/help-icon.png') }}"></a>
-                        </li>
-                    </ul>
-                </div>
+        <li>
+            <a id="item2" href="{{ route('operacional.newChecklist') }}"><img class="icon" id="icon2" src="{{ URL::asset('assets/icons/new-icon.png') }}"></a>
+            </li>
+            <li>
+                <a id="item3" href="{{ route('operacional.profile') }}"><img class="icon" id="icon3" src="{{ URL::asset('assets/icons/user-icon.png') }}"></a>
+            </li>
+            <li>
+                <a id="item4" href="{{ route('operacional.info') }}"><img class="icon" id="icon4"  src="{{ URL::asset('assets/icons/help-icon.png') }}"></a>
+            </li>
+        </ul>
     </div>
     <div class="conteudo">
         @yield('content')

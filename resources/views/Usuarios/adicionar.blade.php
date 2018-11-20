@@ -24,46 +24,27 @@
     @endif
 
     <div class="container">
-        <h3><strong>Cadastro de Usuários</strong></h3><br/><br/>
+        <h3><strong style="margin-left: 40px;">Cadastro de Usuários</strong></h3><br/><br/>
 
         <form method="POST" action="{{route('user.add')}}">
             {{ csrf_field() }}
+
             <div class="row">
-                <div class="col">
                     <label for="name">Nome: </label>
-                </div>
-                <div class="col">
                     <input type="text" name="name" id="name" required> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="email">Email: </label>
-                </div>
-                <div class="col">
-                    <input type="email" name="email" id="email" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="status">Matrícula: </label>
-                </div>
-                <div class="col">
-                    <input type="text" name="matricula" id="matricula" required>
-                </div>
-            </div>
-            <div class="row">
-                <label for="employee_position_id">Nivel de acesso: </label>
-                <select name="employee_position_id" required>
-                    <option selected>Selecione...</option>
-                    @foreach($niveis as $n)
-                    <option value="{{$n->id}}">{{ $n->type }}</option>
-                    @endforeach
-                </select>
             </div>
 
             <div class="row">
-                <label for="funcao">Equipamento de trabalho: </label>
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email" required>
+            </div>
+
+            <div class="row">
+                    <label for="status">Matrícula: </label>
+                    <input type="text" name="matricula" id="matricula" required>
+            </div>
+            <div class="row selects">
+                <label for="funcao">Categoria de equipamento: </label>
                 <select name="categoria" required>
                     <option selected>Selecione...</option>
                     @foreach($categorias as $c)
@@ -72,8 +53,17 @@
                 </select>
             </div>
 
+            <div class="row selects">
+                <label for="employee_position_id">Nivel de acesso: </label>
+                <select name="employee_position_id" required>
+                    <option selected>Selecione...</option>
+                    @foreach($niveis as $n)
+                    <option value="{{$n->id}}">{{ $n->type }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="row">
-                <input type="submit" value="Salvar" class="btn btn-primary">
+                <input type="submit" value="Salvar" class="btn btn-primary salvar">
             </div>
         </form>
     </div>

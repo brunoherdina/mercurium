@@ -47,6 +47,11 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Excluir usuário
     Route::post('Usuario/excluir/{id}', 'Admin\UserController@destroy')->name('user.destroy');
+
+    //Perfil
+    Route::get('Perfil', 'Admin\UserController@showProfile')->name('user.profile');
+
+    
 });
 
 //CHECKLISTS

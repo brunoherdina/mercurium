@@ -1,11 +1,17 @@
 
         /* Novo checklist */
 
+        form{
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
         .selecaoFrota{
             width: 100%;
             font-size:60px;
             text-align: center;
-            padding-top:2%;
+            margin-top:2% !important;
+            margin-bottom: 3% !important;
         }
         
         #labelFrota{
@@ -70,7 +76,7 @@
         .respostas{
             width: 100%;
             height: 8%;
-            font-size: 30px;
+            font-size: 40px;
             margin-top: 15px !important;
         }
         

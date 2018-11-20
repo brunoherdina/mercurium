@@ -53,7 +53,6 @@ hr{
     display: inline;
     margin-left:4%;
     margin-right:4%;
-    width: 100% !important;
 }
 
 .page-title{
@@ -65,4 +64,8 @@ hr{
     min-height: 6%;
     font-size: 70px;
     margin: auto;
+}
+
+.conteudo{
+    width: 100% !important;
 }

@@ -115,6 +115,11 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'    => 'Perfil',
+            'icon'    => 'user',
+            'url'     => 'Perfil',
+        ],
+        [
             'text'    => 'Equipamentos',
             'icon'    => 'car',
             'submenu' => [

@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="{{ asset('css/operacional/perfil.css') }}">
 @section('content')
 
-        <div class="row titulo">
-            <div class="col">
                 <div class="page-title">Alterar senha</div>
-            </div>
-        </div>
 
          @if (\Session::has('success'))
     <div class="alert alert-success">

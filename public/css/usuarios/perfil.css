@@ -1,0 +1,44 @@
+#titulo{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.itens{
+    width: 80%;
+    font-size: 20px;
+}
+
+.conteudo{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.alterar{
+    width: 40%;
+    margin-left: 80px !important;
+}
+
+label{
+    float: left;
+}
+
+fieldset{
+    margin: auto;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+.senhas{
+    width: 40%;
+}
+
+fieldset label{
+    font-size: 17px;
+}
+
+.senhaItens{
+    margin: auto !important;
+    margin-top: 20px;
+    margin-bottom: 25px !important;
+}

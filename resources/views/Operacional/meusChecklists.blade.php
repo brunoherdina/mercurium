@@ -7,11 +7,7 @@
 @endsection
 <link  rel="stylesheet" href="{{ asset('css/operacional/meusChecklists.css') }}">
 @section('content')
-    <div class="row">
-        <div class="col">
             <div class="page-title">Meus checklists</div>
-        </div>
-    </div>
     @if (\Session::has('success'))
     <div class="alert alert-success">
         <ul style="list-style: none; padding: 0;">

@@ -8,6 +8,7 @@ use App\User;
 use App\Models\EmployeePosition;
 use App\Models\EquipamentType;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -113,5 +114,12 @@ class UserController extends Controller
         $niveis = EmployeePosition::get();
         $categorias = EquipamentType::get();
        return view('Usuarios.adicionar', compact('niveis'), compact('categorias'));
+    }
+
+    public function showProfile(){
+        $user = Auth::user();
+        return view('Usuarios.perfil', [
+            'user' => $user,
+        ]);
     }
 }

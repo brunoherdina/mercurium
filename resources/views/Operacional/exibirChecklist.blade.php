@@ -41,6 +41,7 @@
         </div>
     </div>
 
+<div class="tabelas">
     <div class="row">
         <div class="col">
             <table class="table-striped perguntas">
@@ -68,6 +69,7 @@
             </table>
         </div>
     </div>
+</div>
     <div class="row">
         <div class="col">
             <a class="btn btn-primary voltar" href="{{route('operacional.myChecklists')}}">Voltar</a> 

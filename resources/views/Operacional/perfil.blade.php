@@ -23,49 +23,33 @@
     </div>
         @endif
 
-        <div class="row titulo">
-            <div class="col">
                 <div class="page-title">Perfil</div>
-            </div>
-        </div>
 
-         <div class="row">
-            <div class="col info">
+            <div class="info">
                 Nome: {{$user->name}}
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col info">
+            <div class="info">
                 Email: {{$user->email}}
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col info">
+            <div class="info">
                 Equipamento: {{$equipament->type}}
             </div>
-        </div>
         
        
 
-        <div class="row">
-            <div class="col info">
+            <div class="info">
                 Matricula: {{$user->matricula}}
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col info">
+            <div class="info">
                 <a class="btn btn-primary alterar" href="{{route('operacional.alterarSenha')}}">Alterar senha</a>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col info">
+            <div class="info">
                 <a class="btn btn-primary alterar" href="{{route('logout')}}">Logout</a>
             </div>
-        </div>
 
         
 

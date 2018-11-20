@@ -22,11 +22,9 @@
         </ul>
     </div>
         @endif
-        <div class="row">
-            <div class="col">
+
+        
                 <div class="page-title">Novo checklist</div>
-            </div>
-        </div>
 
         <form method="post" action="{{ route('operacional.storeChecklist') }}">
             <div class="selecaoFrota">
@@ -37,8 +35,8 @@
                     <option value="{{$e->id}}" data-km="{{$e->km}}">{{ $e->name }}</option>
                     @endforeach
                 </select>
-                <hr>
             </div>
+            <hr>
             <div class="horimetros">
                 <div class="row-horimetro">
                     <label for="hInicial" id="labelInicial">Horímetro/KM Inicial:</label>

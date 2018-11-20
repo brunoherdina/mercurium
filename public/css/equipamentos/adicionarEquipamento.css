@@ -1,14 +1,14 @@
 .container{
-    width: 80%;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 
 form{
-    width:50%;
-    margin: 0;
-    padding: 0;
-    margin: auto;
+    width:40%;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin: auto !important;
 }
 
 form label{
@@ -23,7 +23,8 @@ form select{
     margin-left: 5%;
 }
 
-.btn{
-    width: 30%;
+form .btn{
+    margin: auto !important;
+    width: 40%;
     margin-top: 5%;
 }

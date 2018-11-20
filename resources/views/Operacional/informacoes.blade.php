@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="{{ asset('css/operacional/info.css') }}">
 @section('content')
 
-        <div class="row titulo">
-            <div class="col">
                 <div class="page-title">Informações</div>
-            </div>
-        </div>
 
         <div class="row texto">
             <div class="col">

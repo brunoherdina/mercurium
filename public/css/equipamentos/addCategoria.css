@@ -26,3 +26,8 @@
 .btn-primary{
     width: 30%;
 }
+
+#type{
+    width: 40%;
+    margin: auto !important;
+}
