@@ -4,6 +4,11 @@
 
 @section('content_header')
 <link  rel="stylesheet" href="{{ asset('css/listarChecklists.css') }}">
+<style>
+#exibir{
+    width: 50% !important;
+}
+</style>
 @stop
 @section('content')
 @if (\Session::has('success'))
@@ -44,26 +49,26 @@
                 <thead>
                 <tr>
                 <th>Usuário</th>
-                <th>Categoria</th>
                 <th>Equipamento</th>
                 <th>Data</th>
                 </tr>
                 </thead>
                 <tbody>
+                    @foreach($checklists as $c)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $c->uName}} </td>
+                        <td>{{ $c->name}} </td>
+                        <td>{{ $c->data }}</td>
                         <td>
-                            <form class="showForm" method="GET" action="{{ route('checklist.show', ['id'=>$c->id]) }}">
+                            <form class="showForm" method="GET" action="{{ route('checklist.preenchidos.exibir', ['id'=>$c->id])}}">
                                 {{ csrf_field() }}
-                                <button class="btn btn-primary show_button acao" type="submit">
+                                <button class="btn btn-primary show_button acao" type="submit" id="exibir">
                                                 Exibir
                                 </button>
                             </form>
                         </td>
                     </tr>
+                    @endforeach
             </tbody>
         </table>
     </div>

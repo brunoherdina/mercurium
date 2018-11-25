@@ -84,7 +84,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('Checklists/listar/tornarPadrao/{id}', 'Admin\EquipamentChecklistController@tornarPadrao')->name('checklist.inUse');
 
     //Checklists preenchidos
-    Route::match(['get', 'post'], 'Checklists/preenchidos', 'Admin\ChecklistController@index')->name('checklists.preenchidos.list');
+    Route::match(['get', 'post'], 'Checklists/preenchidos', 'Admin\ChecklistController@index')->name('checklist.preenchidos.list');
+
+    //Exibir checklist preenchido
+    Route::get('Checklists/preenchidos/exibir/{id}', 'Admin\ChecklistController@showChecklist')->name('checklist.preenchidos.exibir');
 });
 
 
