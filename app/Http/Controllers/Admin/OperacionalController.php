@@ -82,6 +82,13 @@ class OperacionalController extends Controller
         $checklist->parecer_final = $request->input('parecerFinal');
         $checklist->observacoes = $request->input('observacao');
         $checklist->save();
+        
+            if($checklist->parecer_final == 0){
+                $equipament = Equipament::where('id', $checklist->equipament_id)->first();
+                $equipament->status = 0;
+                $equipament->save();
+            }
+
         }catch(PDOException $e){
             echo $e->getMessage();
         }

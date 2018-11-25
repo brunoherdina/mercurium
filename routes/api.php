@@ -23,3 +23,9 @@ Route::get('checklists', 'Api\EquipamentChecklistApi@index');
 
 //Logar no sistema
 Route::post('login', 'Api\UserApi@login');
+
+//Retornar status equipamentos
+Route::get('equipaments', 'Admin\GraficosController@index')->name('api.equipaments');
+
+//Retornar total checklists
+Route::get('checklists', 'Admin\GraficosController@checklistsPreenchidos')->name('api.checklists');

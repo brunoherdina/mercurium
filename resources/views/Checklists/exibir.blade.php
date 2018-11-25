@@ -21,6 +21,13 @@
             </ul>
         </div>
     @endif
+    @if (\Session::has('warning'))
+        <div class="alert alert-warning">
+            <ul style="list-style: none; padding: 0;">
+                <li>{!! \Session::get('warning') !!}</li>
+            </ul>
+        </div>
+    @endif
 <div class="container">
     @foreach ($checklist as $c)
     <div class="row info"> 

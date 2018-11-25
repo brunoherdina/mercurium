@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Equipament;
 use App\Models\EquipamentType;
 use DB;
+use App\Models\EquipamentChecklist;
+use App\Models\Checklist;
+use App\Models\ChecklistAnswer;
 
 class EquipamentsController extends Controller
 {
@@ -21,11 +24,26 @@ class EquipamentsController extends Controller
 
     public function getAll(Request $request)
     {
-        $equipamentos = DB::table('equipaments')
-        ->join('equipament_types', 'equipaments.equipament_type_id', '=', 'equipament_types.id')
-        ->select('equipaments.*', 'equipament_types.type')
-        ->get();
-       return view('Equipamentos.alterarEquipamento', compact('equipamentos'));
+
+        if($request->has('busca')){
+            $s = $request->get('busca');
+            $equipamentos = DB::table('equipaments')
+            ->join('equipament_types', 'equipaments.equipament_type_id', '=', 'equipament_types.id')
+            ->select('equipaments.*', 'equipament_types.type')
+            ->where(function($q) use ($s){
+                $q->Where('name', 'LIKE', "%{$s}%");
+                $q->orWhere('type', 'LIKE', "%{$s}%");
+            })->paginate(15);
+            return view('Equipamentos.alterarEquipamento', compact('equipamentos'));
+            }else{
+                $equipamentos = DB::table('equipaments')
+                ->join('equipament_types', 'equipaments.equipament_type_id', '=', 'equipament_types.id')
+                ->select('equipaments.*', 'equipament_types.type')
+                ->get();
+            return view('Equipamentos.alterarEquipamento', compact('equipamentos'));
+            }
+
+        
     }
 
     public function store(Request $request)
@@ -65,11 +83,25 @@ class EquipamentsController extends Controller
 
     public function destroy($id)
     {
+        try{
+            $eq = Equipament::find($id);
+            $checklists = Checklist::where('equipament_id', $id)->get();
+            foreach($checklists as $c)
+            {
+                    $answers = ChecklistAnswer::where('checklist_id', $c->id)->get();
+                    foreach($answers as $a){
+                        
+                        $a->delete();
+                    }
 
-        $eq = Equipament::find($id);
-        $eq->delete();
+                    $c->delete();
+            }
+            $eq->delete();
 
-        return redirect()->route('equipament.list')->with('success', 'Equipamento excluido com sucesso!');
+            return redirect()->route('equipament.list')->with('success', 'Equipamento excluido com sucesso!');
+        }catch(PDOException $e){
+            return redirect()->route('equipament.list')->with('error', 'Erro ao excluir equipamento: '.$e->getMessage());
+        }
     }
 
     public function editarEquipamento($id)
@@ -82,4 +114,15 @@ class EquipamentsController extends Controller
 
     }
 
+    public function corrigir($id)
+    {
+        $e = Equipament::findOrFail($id);
+        try{
+            $e->status = 1;
+            $e->save();
+            return redirect()->route('equipament.list')->with('success', 'Equipamento removido da lista de equipamentos defeituosos');
+        }catch(PDOException $e){
+            return redirect()->route('equipament.list')->with('error', 'Falha ao remover equipamento da lista de equipamentos defeituosos!'. $e->getMessage());
+        }
+    }
 }

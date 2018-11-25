@@ -7,6 +7,20 @@
 <link rel="stylesheet"  href="{{ asset('css/equipamentos/alterarEquipamentos.css') }}">
 
 @stop
+<style>
+
+#busca{
+    width:430px;
+    height: 35px;
+}
+
+#searchIcon{
+    margin-left:10px;
+    width:50px;
+    height:50px;
+}
+
+</style>
 
 @section('content')
 @if (\Session::has('success'))
@@ -25,8 +39,58 @@
         </div>
     @endif
 <div class="container">
-    <h3><strong>Equipamentos</strong></h3><br/><br/>
+    <div class="row">
+        <div class="col">
+            <form class="form-inline" method="POST" action="{{ route('equipament.list') }}">
+                {{ csrf_field() }}
+                <div class="form-group mb-2">
+                    <input type="text"  class="form-control-plaintext" id="busca" name="busca" placeholder="Pesquisar...">
+                </div>
+                <div class="form-group mb-2">
+                    <input type="image" id="searchIcon" name="pesquisar" src="{{ URL::asset('assets/icons/search-icon.png') }}">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+            <h2 class="tableTitle">Equipamentos com defeito</h2>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                    <th>Frota</th>
+                    <th>Horímetro/KM</th>
+                    <th>Categoria</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse ( $equipamentos as $eq )
+                    @if($eq->status == 0)
+                        <tr>
+                            <td>{{ $eq->name }}</td>
+                            <td> {{ $eq->km }}</td>
+                            <td>{{$eq->type}}</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <form method="POST" action="{{ route('equipament.corrigir', ['id'=>$eq->id]) }}">
+                                            {{csrf_field() }}
+                                            <button class="btn btn-success botao corrigir" type="button">Defeito corrigido</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
+                    
+                        @empty
+                            <p>Nenhuma equipamento cadastrado</p>
+                        @endforelse
+                    </tbody>
+                </table>
+        </div>
+
         <div class="row">
+            <h2 class="tableTitle">Todos os equipamentos</h2>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -55,9 +119,9 @@
                                 </div>
                             </td>
                         </tr>
-
+                    
                         @empty
-                            <p>Nenhuma Categoria Cadastrada</p>
+                            <p>Nenhuma equipamento cadastrado</p>
                         @endforelse
                     </tbody>
                 </table>
@@ -71,14 +135,33 @@
 		var form = button.closest('form');
 		
 		swal({
-		  title: 'Atenção',
-		  text: "Você está prestes a excluir o equipamento, deseja continuar?",
+		  title: 'Você está prestes a excluir este equipamento. Deseja continuar?',
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
 		  confirmButtonText: 'Sim',
 		  cancelButtonText: 'Não'
+		}).then((result) => {
+		  if (result.value) {
+			form[0].submit();
+		  }
+		})	;		
+    });
+
+    $('.corrigir').on('click', function (event) {
+        var button = $(this);
+		var form = button.closest('form');
+		
+		swal({
+		  title: 'Remover este equipamento da lista de equipamentos com defeito?',
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          width: '400px',
 		}).then((result) => {
 		  if (result.value) {
 			form[0].submit();

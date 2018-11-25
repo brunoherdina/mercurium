@@ -117,8 +117,7 @@ form{
 		var form = button.closest('form');
 		
 		swal({
-		  title: 'Atenção',
-		  text: "Você está prestes a excluir o usuário, deseja continuar?",
+		  title: "Você está prestes a excluir este usuário. Deseja continuar?",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',

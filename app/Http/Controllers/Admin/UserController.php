@@ -9,6 +9,8 @@ use App\Models\EmployeePosition;
 use App\Models\EquipamentType;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Checklist;
+use App\Models\ChecklistAnswer;
 
 class UserController extends Controller
 {
@@ -58,6 +60,16 @@ class UserController extends Controller
     {
         try{
         $u = User::findOrFail($id);
+        $checklists = Checklist::where('user_id', $u->id)->get();
+        
+            foreach($checklists as $c){
+                $answers = ChecklistAnswer::where('checklist_id', $c->id)->get();
+                    foreach($answers as $a){
+                        $a->delete();
+                    }
+                $c->delete();
+            }
+
         $u->delete();
         return redirect()->route('user.search')->with('success', 'Usuário excluido com sucesso!');
         }catch(PDOException $e){

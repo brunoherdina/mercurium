@@ -164,6 +164,10 @@ return [
                 [
                     'text' => 'Listar checklists',
                     'url'  => 'Checklists/listar'
+                ],
+                [
+                    'text' => 'Checklists preenchidos',
+                    'url'  => 'Checklists/preenchidos'
                 ]
                 
             ],

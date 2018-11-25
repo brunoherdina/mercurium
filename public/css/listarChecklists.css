@@ -11,15 +11,20 @@
 }
 
 .acao{
-    width:40%;
+    width:30%;
     float:right;
     margin-left:10px;
 
 }
 
-#deleteForm{
+.deleteForm{
     margin:0;
     padding:0;
+}
+
+.showForm{
+    margin: 0;
+    padding: 0;
 }
 
 .perguntas{
@@ -43,6 +48,17 @@
     margin-bottom:10px;
 }
 
-#version{
-    margin-left:33px;
+.categoriaT{
+    width: 40%;
+}
+
+#busca{
+    width:430px;
+    height: 35px;
+}
+
+#searchIcon{
+    margin-left:10px;
+    width:50px;
+    height:50px;
 }

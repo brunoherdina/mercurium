@@ -73,8 +73,7 @@
 		var form = button.closest('form');
 		
 		swal({
-		  title: 'Atenção',
-		  text: "Você está prestes a excluir esta categoria, deseja continuar?",
+		  title: "Você está prestes a excluir esta categoria. Deseja continuar?",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',

@@ -12,9 +12,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('equipament.add', 'Admin\EquipamentsController@store')->name('equipament.add');
 
     //Editar equipamento
-    Route::get('Equipamento/alterar', 'Admin\EquipamentsController@getAll')->name('equipament.list');
     Route::get('Equipamento/editar/{id?}', 'Admin\EquipamentsController@editarEquipamento')->name('equipament.edit');
     Route::post('Equipamento/atualizar/{id}', 'Admin\EquipamentsController@update')->name('equipament.update');
+
+    //Retirar defeito
+    Route::post('Equipamento/alterar/{id}', 'Admin\EquipamentsController@corrigir')->name('equipament.corrigir');
+
+    //Buscar equipamento
+    Route::match(['get', 'post'], 'Equipamento/alterar', 'Admin\EquipamentsController@getAll')->name('equipament.list');
+
 
     //Excluir equipamento
     Route::post('Equipamento/excluir/{id?}', 'Admin\EquipamentsController@destroy')->name('equipament.destroy');
@@ -66,7 +72,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('Checklists/novo', 'Admin\EquipamentChecklistController@store')->name('checklist.store');
 
     //Listar checklists
-    Route::get('Checklists/listar', 'Admin\EquipamentChecklistController@listar')->name('checklist.list');
+    Route::match(['get', 'post'], 'Checklists/listar', 'Admin\EquipamentChecklistController@listar')->name('checklist.list');
 
     //Exibir checklist
     Route::get('Checklists/listar/{id}', 'Admin\EquipamentChecklistController@show')->name('checklist.show');
@@ -76,6 +82,9 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Tornar checklist padrão
     Route::post('Checklists/listar/tornarPadrao/{id}', 'Admin\EquipamentChecklistController@tornarPadrao')->name('checklist.inUse');
+
+    //Checklists preenchidos
+    Route::match(['get', 'post'], 'Checklists/preenchidos', 'Admin\ChecklistController@index')->name('checklists.preenchidos.list');
 });
 
 

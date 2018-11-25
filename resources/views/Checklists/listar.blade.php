@@ -23,6 +23,22 @@
     @endif
 <div class="container">
     <h3><strong>Checklists</strong></h3><br/><br/>
+
+    <div class="row">
+        <div class="col">
+            <form class="form-inline" method="POST" action="{{ route('checklist.list') }}">
+                {{ csrf_field() }}
+                <div class="form-group mb-2">
+                    <input type="text"  class="form-control-plaintext" id="busca" name="busca" placeholder="Pesquisar...">
+                </div>
+                <div class="form-group mb-2">
+                    <input type="image" id="searchIcon" name="pesquisar" src="{{ URL::asset('assets/icons/search-icon.png') }}">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="tituloTabela" style="text-align:center;">Checklists em uso</h2>
     <div class="row tabela">
             <table class="table table-hover">
                 <thead>
@@ -33,15 +49,16 @@
                 </thead>
                 <tbody>
                     @foreach ($checklists as $c)
+                    @if($c->in_use == 1)
                     <tr>
                         <td class="categoriaT">{{ $c->type }}</td>
                         <td class="versaoT">{{ $c->version }}</td>
                         <td class="acoes">
-                            <form id="deleteForm" method="POST" action="{{ route( 'checklist.destroy',  ['id'=>$c->id] )}}">
+                            <form class="deleteForm" method="POST" action="{{ route( 'checklist.destroy',  ['id'=>$c->id] )}}">
                                 {{ csrf_field() }}
                                 <button class="btn btn-danger delete_button acao" type="button">Excluir</button>
                             </form>
-                            <form id="showForm" method="GET" action="{{ route('checklist.show', ['id'=>$c->id]) }}">
+                            <form class="showForm" method="GET" action="{{ route('checklist.show', ['id'=>$c->id]) }}">
                                 {{ csrf_field() }}
                                 <button class="btn btn-primary show_button acao" type="submit">
                                                 Exibir
@@ -49,6 +66,41 @@
                             </form>
                         </td>
                     </tr>
+                    @endif
+                    @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="tituloTabela" style="text-align:center;">Outros checklists</h2>
+    <div class="row tabela">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                <th>Categoria</th>
+                <th>Versão</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach ($checklists as $c)
+                    @if($c->in_use == 0)
+                    <tr>
+                        <td class="categoriaT">{{ $c->type }}</td>
+                        <td class="versaoT">{{ $c->version }}</td>
+                        <td class="acoes">
+                            <form class="deleteForm" method="POST" action="{{ route( 'checklist.destroy',  ['id'=>$c->id] )}}">
+                                {{ csrf_field() }}
+                                <button class="btn btn-danger delete_button acao" type="button">Excluir</button>
+                            </form>
+                            <form class="showForm" method="GET" action="{{ route('checklist.show', ['id'=>$c->id]) }}">
+                                {{ csrf_field() }}
+                                <button class="btn btn-primary show_button acao" type="submit">
+                                                Exibir
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endif
                     @endforeach
             </tbody>
         </table>

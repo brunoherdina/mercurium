@@ -35,7 +35,7 @@ class EquipamentChecklistController extends Controller
                     $c->save();
                 }
             }catch(PDOException $e){
-                return redirect()->route('checklist.add')->with('erro', 'Erro selecionar vesão padrão!');
+                return redirect()->route('checklist.add')->with('erro', 'Erro selecionar versão padrão!');
             }
         }
 
@@ -65,14 +65,29 @@ class EquipamentChecklistController extends Controller
         }
     }
 
-    public function listar()
+    public function listar(Request $request)
     {
-        $checklists = DB::table('equipament_checklists')
-        ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
-        ->select('equipament_checklists.*', 'equipament_types.type')
-        ->get();
+        if($request->has('busca')){
+            $s = $request->get('busca');
+            $checklists = DB::table('equipament_checklists')
+            ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+            ->select('equipament_checklists.*', 'equipament_types.type')
+            ->where(function($q) use ($s){
+                $q->Where('version', 'LIKE', "%{$s}%");
+                $q->orWhere('type', 'LIKE', "%{$s}%");
+            })->paginate(15);
+            return view('Checklists.listar', compact('checklists'));
 
-        return view('Checklists.listar', compact('checklists'));
+            }else{
+                $checklists = DB::table('equipament_checklists')
+                ->join('equipament_types', 'equipament_checklists.equipament_type_id', '=', 'equipament_types.id')
+                ->select('equipament_checklists.*', 'equipament_types.type')
+                ->get();
+        
+                return view('Checklists.listar', compact('checklists'));
+            }
+
+       
     }
 
     public function delete($id)
@@ -110,19 +125,25 @@ class EquipamentChecklistController extends Controller
         $checklist = EquipamentChecklist::findOrFail($request->id);
         $allChecklists = EquipamentChecklist::where('equipament_type_id', $checklist->equipament_type_id)->get();
         
-        foreach($allChecklists as $ac)
-        {   
-            $ac->in_use = 0;
-            $ac->save();
-        }
+        if($checklist->in_use == 0){
+            foreach($allChecklists as $ac)
+            {   
+                $ac->in_use = 0;
+                $ac->save();
+            }
 
-        try{
-        $checklist->in_use = 1;
-        $checklist->save();
-        return redirect()->route('checklist.list')->with('success', 'Checklist definido como padrão!');
-        }catch(PDOException $e){
-            return redirect()->route('checklist.list')->with('error', 'Erro ao tornar checklist padrão!');
+            try{
+            $checklist->in_use = 1;
+            $checklist->save();
+            return redirect()->route('checklist.list')->with('success', 'Checklist definido como padrão!');
+            }catch(PDOException $e){
+                return redirect()->route('checklist.list')->with('error', 'Erro ao tornar checklist padrão!');
+            }
+        }else{
+            return redirect()->route('checklist.show', $checklist->id)->with('warning', 'Este já é o checklist padrão para esta categoria!');
         }
     }
+
+    
 }
 

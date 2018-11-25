@@ -38,10 +38,10 @@
             </div>
             <hr>
             <div class="horimetros">
-                <div class="row-horimetro">
+                <!-- <div class="row-horimetro">
                     <label for="hInicial" id="labelInicial">Horímetro/KM Inicial:</label>
                     <input type="text" name="hInicial" id="initial" value="" readonly>
-                </div>
+                </div> -->
                 <div class="row-horimetro final">
                     <label for="hFinal" id="labelFinal">Horímetro/KM Final:</label>
                     <input type="text" name="hFinal">
