@@ -38,13 +38,13 @@
             </div>
             <hr>
             <div class="horimetros">
-                <!-- <div class="row-horimetro">
+                <div class="row-horimetro">
                     <label for="hInicial" id="labelInicial">Horímetro/KM Inicial:</label>
                     <input type="text" name="hInicial" id="initial" value="" readonly>
-                </div> -->
+                </div>
                 <div class="row-horimetro final">
                     <label for="hFinal" id="labelFinal">Horímetro/KM Final:</label>
-                    <input type="text" name="hFinal">
+                    <input type="text" name="hFinal" id="final">
                 </div>
             </div>
             <div class="questions">
@@ -79,9 +79,10 @@
                 <textarea name="observacao" placeholder="Área para informações adicionais" class="obTextArea"></textarea>
                 <input type="hidden" value="{{$checklist->id}}" name="checklist_id"> 
             </div>
-            <button class="btn btn-primary salvar" type="submit">Salvar checklist</button>
+            <button class="btn btn-primary salvar" type="button" id="enviar">Salvar checklist</button>
         </form>
 
         <script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::asset('js/operacional.novo.js') }}"></script>
 @endsection

@@ -1,10 +1,29 @@
 $(function(){
-    
+    var km;
+    var initial;
+    var final;
     $('#frota').on('change', function () {
-        var valueSelect = $(this).val();
-        var km = $(this).find('option[value=" '+ valueSelect +' "]').data('km');
-        console.log(km);
+        km = $('#frota :selected').data('km');
+        $('#initial').val(km);
 
+    });
+
+    $('#enviar').on('click', function(){
+        initial = $('#initial').val();
+        final = $('#final').val();
+
+        if(initial > final){
+        swal({
+		  title: 'O valor final do horimetro/km não pode ser menor que o valor inicial!',
+		  type: 'warning',
+		  showCancelButton: false,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Entendi',
+        })	;	
+    }else{
+        $(this).closest('form').submit();
+    }
     });
 
         $('#icon2').addClass('active');

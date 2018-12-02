@@ -22,11 +22,11 @@
         </div>
     @endif
 <div class="container">
-    <h3><strong>Checklist {{$checklist->id}}</strong></h3><br/><br/>
+    <h3 id="titulo"><strong>Checklist ID: {{$checklist->id}}</strong></h3><br/><br/>
 
     <div class="row">
-        <div class="col">
-            <div class="page-title">Exibir checklist</div>
+        <div class="col info">
+            Funcionário: {{$user->name}}
         </div>
     </div>
     <div class="row">
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row">
-        <div class="col info">
+        <div class="col info obs">
             Observações: {{$checklist->observacoes}}
         </div>
     </div>
@@ -62,7 +62,7 @@
         <div class="col">
             <table class="table-striped perguntas">
                 <tr>
-                    <th>Itens</th>
+                    <th style="text-align: right;">Itens</th>
                 </tr>
                 @foreach($questions as $q)
                 <tr>
@@ -87,8 +87,8 @@
     </div>
 </div>
     <div class="row">
-        <div class="col">
-            <a class="btn btn-primary voltar" href="{{route('operacional.myChecklists')}}">Voltar</a> 
+        <div class="col voltar">
+            <a class="btn btn-primary botao" href="{{route('checklist.preenchidos.list')}}">Voltar</a> 
         </div>
     </div>
 </div>

@@ -1,0 +1,39 @@
+#titulo{
+    text-align: center;
+}
+
+.tabelas{
+    margin-top: 20px;
+}
+
+.perguntas{
+    width: 49%;
+    float: left;
+    text-align: right;
+    /* border-right: 2px solid #bbb; */
+    margin-right: 2%;
+}
+
+.respostas{
+    width: 49%;
+    /* border-left: 2px solid #bbb; */
+}
+
+.info{
+    font-size: 20px;
+    text-align:center;
+    word-wrap: wrap;
+}
+
+.obs{
+    margin-top: 20px;
+}
+
+.voltar{
+    text-align: center;
+    margin-top: 20px !important;
+
+}
+.botao{
+    width: 14%;
+}

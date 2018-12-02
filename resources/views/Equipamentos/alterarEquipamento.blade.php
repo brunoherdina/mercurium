@@ -7,20 +7,6 @@
 <link rel="stylesheet"  href="{{ asset('css/equipamentos/alterarEquipamentos.css') }}">
 
 @stop
-<style>
-
-#busca{
-    width:430px;
-    height: 35px;
-}
-
-#searchIcon{
-    margin-left:10px;
-    width:50px;
-    height:50px;
-}
-
-</style>
 
 @section('content')
 @if (\Session::has('success'))

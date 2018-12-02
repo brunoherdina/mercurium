@@ -43,9 +43,20 @@
                     <label for="status">Matrícula: </label>
                     <input type="text" name="matricula" id="matricula" required>
             </div>
-            <div class="row selects">
-                <label for="funcao">Categoria de equipamento: </label>
-                <select name="categoria" required>
+
+             <div class="row selects">
+                <label for="employee_position_id">Nivel de acesso: </label>
+                <select name="employee_position_id" class="opcoes" required id="nivelSelect">
+                    <option selected>Selecione...</option>
+                    @foreach($niveis as $n)
+                    <option value="{{$n->id}}">{{ $n->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="row selects" id="equipamentoSelect">
+                <label for="funcao">Equipamento: </label>
+                <select name="categoria" class="opcoes">
                     <option selected>Selecione...</option>
                     @foreach($categorias as $c)
                     <option value="{{$c->id}}">{{ $c->type }}</option>
@@ -53,19 +64,12 @@
                 </select>
             </div>
 
-            <div class="row selects">
-                <label for="employee_position_id">Nivel de acesso: </label>
-                <select name="employee_position_id" required>
-                    <option selected>Selecione...</option>
-                    @foreach($niveis as $n)
-                    <option value="{{$n->id}}">{{ $n->type }}</option>
-                    @endforeach
-                </select>
-            </div>
             <div class="row">
                 <input type="submit" value="Salvar" class="btn btn-primary salvar">
             </div>
         </form>
     </div>
 
+<script type="text/javascript" src="{{ URL::asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/adicionarUser.js') }}"></script>
 @stop

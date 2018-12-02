@@ -32,6 +32,7 @@ class OperacionalController extends Controller
         ->join('equipament_checklists', 'checklists.equipament_checklist_id', '=', 'equipament_checklists.id')
         ->join('equipaments', 'checklists.equipament_id', '=', 'equipaments.id')
         ->select('checklists.*', 'equipament_checklists.version', 'equipaments.name')
+        ->orderBy('checklists.created_at', 'DESC')
         ->get();
         
         return view('Operacional.meusChecklists', [
