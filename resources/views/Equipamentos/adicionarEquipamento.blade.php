@@ -46,9 +46,11 @@
                     @endforeach
                  </select>
             </div>
-            <br/>
-            <br/>
-                <input type="submit" value="Salvar" class="btn btn-primary salvar">
+            <div class="row botaoArea">
+                <div class="col">
+                    <input type="submit" value="Salvar" class="btn btn-primary salvar">
+                </div>
+            </div>
         </form>
     </div>
 
